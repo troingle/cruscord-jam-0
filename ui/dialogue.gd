@@ -12,6 +12,7 @@ var current_npc = ""
 func open_dialogue(npc_name, first_time):
 	current_npc = npc_name
 	show()
+	$"../LeaveButton".show()
 	name_label.text = current_npc
 	
 	if first_time:

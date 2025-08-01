@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://14g5htvx2spn"]
+[gd_scene load_steps=7 format=3 uid="uid://14g5htvx2spn"]
 
 [ext_resource type="PackedScene" uid="uid://cgp4by0w8v538" path="res://misc_nodes/world_environment.tscn" id="1_vn7o3"]
+[ext_resource type="Texture2D" uid="uid://ivh3rbao56jw" path="res://textures/world/premade/floor_brick.png" id="2_bt44k"]
 [ext_resource type="PackedScene" uid="uid://bqe6mh5mitj27" path="res://player/player.tscn" id="2_jirdo"]
+[ext_resource type="Texture2D" uid="uid://dhbpig8shrsjx" path="res://textures/world/premade/brick1.png" id="3_kx6l7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jirdo"]
+shading_mode = 0
+albedo_texture = ExtResource("2_bt44k")
+uv1_scale = Vector3(0.165, 0.165, 0.165)
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx6l7"]
-uv1_scale = Vector3(-0.085, -0.085, -0.085)
+shading_mode = 0
+albedo_texture = ExtResource("3_kx6l7")
+uv1_scale = Vector3(0.165, 0.165, 0.165)
 uv1_triplanar = true
 
 [node name="Level1" type="Node3D"]
@@ -17,6 +27,26 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="TestGround"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2396, -0.508488, -3.51587)
 size = Vector3(48.4587, 1, 30.0317)
+material = SubResource("StandardMaterial3D_jirdo")
+
+[node name="Wall" type="CSGBox3D" parent="TestGround"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.2396, 3.97566, -19.5159)
+size = Vector3(48.4587, 1, 13)
+material = SubResource("StandardMaterial3D_kx6l7")
+
+[node name="Wall2" type="CSGBox3D" parent="TestGround"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 12.7604, 3.97566, -5.51587)
+size = Vector3(48.4587, 1, 13)
+material = SubResource("StandardMaterial3D_kx6l7")
+
+[node name="Wall3" type="CSGBox3D" parent="TestGround"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, -12.5103, 3.97566, 10.4841)
+size = Vector3(55, 1, 13)
+material = SubResource("StandardMaterial3D_kx6l7")
+
+[node name="Wall4" type="CSGBox3D" parent="TestGround"]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 1.31134e-07, -5.73206e-15, -32.5103, 3.97566, -8.51587)
+size = Vector3(55, 1, 13)
 material = SubResource("StandardMaterial3D_kx6l7")
 
 [node name="Player" parent="." instance=ExtResource("2_jirdo")]

@@ -1,0 +1,5 @@
+res://levels/level_1.tscn
+res://ui/ui.tscn
+res://ui/option.tscn
+res://ui/leave_button.gd
+res://ui/dialogue.gd

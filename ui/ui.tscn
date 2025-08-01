@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=9 format=3 uid="uid://b61d4dal1kclu"]
 
 [ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
 [ext_resource type="FontFile" uid="uid://c7c6426jrb7b4" path="res://fonts/I'm gonna cry.ttf" id="2_ks8t7"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
+[ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="4_vkava"]
+[ext_resource type="Script" uid="uid://bmw6w340i368x" path="res://ui/leave_button.gd" id="5_tf0e0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
 bg_color = Color(0.121569, 0.121569, 0.160784, 1)
@@ -130,3 +132,13 @@ layout_mode = 2
 
 [node name="Option10" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
+
+[node name="LeaveButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 179.0
+offset_right = 761.0
+offset_bottom = 211.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_vkava")
+script = ExtResource("5_tf0e0")

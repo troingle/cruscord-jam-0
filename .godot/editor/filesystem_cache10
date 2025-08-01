@@ -1,0 +1,27 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1754068540
+README.md::TextFile/TextFile::-1::1754067557::0::1::::<><><>0<>0<><>::
+::res://fonts/::1754067585
+I'm gonna cry.ttf::FontFile/FontFile::7024948600561463991::1754067557::1754067585::1::::<><><>0<>0<>d0da6c200a44e3647216116349117e61<>res://.godot/imported/I'm gonna cry.ttf-9600379d549c0199a6e30048f32eec5c.fontdata::
+::res://levels/::1754068440
+level_1.tscn::PackedScene::1885195163231018235::1754068440::0::1::::<><><>0<>0<><>::uid://cgp4by0w8v538::::res://misc_nodes/world_environment.tscn<>uid://ivh3rbao56jw::::res://textures/world/premade/floor_brick.png<>uid://bqe6mh5mitj27::::res://player/player.tscn<>uid://dhbpig8shrsjx::::res://textures/world/premade/brick1.png
+::res://misc_nodes/::1754067557
+world_environment.tscn::PackedScene/PackedScene::5226703974334478729::1754067557::0::1::::<><><>0<>0<><>::uid://dxoswcp6e3nlj::::res://textures/world/skybox1.png
+::res://player/::1754067557
+player.gd::GDScript/GDScript::47744996028136742::1754067557::0::1::::<>CharacterBody3D<><>0<>0<><>::
+player.tscn::PackedScene/PackedScene::3519603763784734834::1754067557::0::1::::<><><>0<>0<><>::uid://xemagug7w8m::::res://player/player.gd<>uid://b61d4dal1kclu::::res://ui/ui.tscn
+::res://textures/::1754068124
+::res://textures/ui_textures/::1754068309
+LEAVe.png::CompressedTexture2D/CompressedTexture2D::8008932150416919887::1754068286::1754068309::1::::<><><>0<>0<>f342753f50cf43858f7332c858ce8b36<>res://.godot/imported/LEAVe.png-64a245b587619fb2e4a90785e50f0aa2.ctex::
+LEAVe_alt.png::CompressedTexture2D/CompressedTexture2D::8124198741391863210::1754068299::1754068309::1::::<><><>0<>0<>3a3cd5e31b472def2778526cca0ad6bc<>res://.godot/imported/LEAVe_alt.png-b529ca8c87dda90d8448e36781cd45c8.ctex::
+::res://textures/world/::1754067671
+skybox1.png::CompressedTexture2D/CompressedTexture2D::8803639066280314867::1754067557::1754067585::1::::<><><>0<>0<>faba6a6bde702cc68c6ea6520487a4f5<>res://.godot/imported/skybox1.png-333253e96e8b97119c1824af9bc906b3.s3tc.ctex::
+::res://textures/world/premade/::1754067716
+brick1.png::CompressedTexture2D/CompressedTexture2D::7653573742488853641::1754067669::1754067687::1::::<><><>0<>0<>c499e321a4c7a8e63e3ad2d73ff6b0ae<>res://.godot/imported/brick1.png-b07b5577b58cc2a407c48c1314a6b417.s3tc.ctex::
+floor_brick.png::CompressedTexture2D/CompressedTexture2D::605338597579897556::1754067682::1754067716::1::::<><><>0<>0<>19257cf94ecf9e698ba5433aca3911a0<>res://.godot/imported/floor_brick.png-3fef059915d369b1e9f1feff8bdce831.s3tc.ctex::
+::res://ui/::1754068440
+dialogue.gd::GDScript/GDScript::6855257105218939523::1754067557::0::1::::<>PanelContainer<><>0<>0<><>::
+dialogue_source.gd::GDScript/GDScript::2255460335404586542::1754067557::0::1::::<>Node<><>0<>0<><>::
+option.gd::GDScript/GDScript::7459370110678002094::1754067557::0::1::::<>PanelContainer<><>0<>0<><>::
+option.tscn::PackedScene::6932797825590577066::1754068440::0::1::::<><><>0<>0<><>::uid://dejm0axvk5uk1::::res://ui/option.gd<>uid://c7c6426jrb7b4::::res://fonts/I'm gonna cry.ttf
+ui.tscn::PackedScene::4616182755184181090::1754068440::0::1::::<><><>0<>0<><>::uid://c4w0c25s50ndb::::res://ui/dialogue.gd<>uid://c7c6426jrb7b4::::res://fonts/I'm gonna cry.ttf<>uid://c51kfxnjyebe5::::res://ui/option.tscn<>uid://dmdt7boaaxlsh::::res://textures/ui_textures/LEAVe.png
