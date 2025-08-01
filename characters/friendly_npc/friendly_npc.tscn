@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpu3qw10jn7wc"]
+
+[ext_resource type="Script" uid="uid://cmx7q8r1p0231" path="res://characters/friendly_npc/friendly_npc.gd" id="1_sc2l7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l01yl"]
+radius = 1.0
+height = 4.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l01yl"]
+radius = 1.0
+height = 4.0
+
+[node name="FriendlyNPC" type="CharacterBody3D"]
+script = ExtResource("1_sc2l7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CapsuleShape3D_l01yl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("CapsuleMesh_l01yl")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="NPCHead" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="NPCHead"]
+target_position = Vector3(8, 0, 0)
+
+[node name="EndPoint" type="Node3D" parent="NPCHead/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="WaitTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]

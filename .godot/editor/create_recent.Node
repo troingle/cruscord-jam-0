@@ -1,1 +1,11 @@
+Timer
+Node3D
+RayCast3D
+Marker3D
+NavigationAgent3D
+NavigationAgent2D
+MeshInstance3D
+CollisionShape3D
+CharacterBody3D
+NavigationRegion3D
 TextureRect
