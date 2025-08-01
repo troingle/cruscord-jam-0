@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://14g5htvx2spn"]
+
+[ext_resource type="PackedScene" uid="uid://cgp4by0w8v538" path="res://misc_nodes/world_environment.tscn" id="1_vn7o3"]
+[ext_resource type="PackedScene" uid="uid://bqe6mh5mitj27" path="res://player/player.tscn" id="2_jirdo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx6l7"]
+uv1_scale = Vector3(-0.085, -0.085, -0.085)
+uv1_triplanar = true
+
+[node name="Level1" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_vn7o3")]
+
+[node name="TestGround" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="TestGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2396, -0.508488, -3.51587)
+size = Vector3(48.4587, 1, 30.0317)
+material = SubResource("StandardMaterial3D_kx6l7")
+
+[node name="Player" parent="." instance=ExtResource("2_jirdo")]

@@ -1,0 +1,132 @@
+[gd_scene load_steps=7 format=3 uid="uid://b61d4dal1kclu"]
+
+[ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
+[ext_resource type="FontFile" uid="uid://c7c6426jrb7b4" path="res://fonts/I'm gonna cry.ttf" id="2_ks8t7"]
+[ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
+bg_color = Color(0.121569, 0.121569, 0.160784, 1)
+border_width_top = 3
+border_color = Color(0.254902, 0.227451, 0.258824, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkava"]
+bg_color = Color(0, 0, 0, 0)
+border_width_bottom = 3
+border_color = Color(0.254902, 0.227451, 0.258824, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl5ax"]
+bg_color = Color(0.254902, 0.227451, 0.258824, 1)
+border_width_left = 1
+border_color = Color(0.254902, 0.227451, 0.258824, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DialogueBox" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.35
+theme_override_styles/panel = SubResource("StyleBoxFlat_ks8t7")
+script = ExtResource("1_nb4k0")
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox/MarginContainer"]
+layout_mode = 2
+
+[node name="LeftSide" type="MarginContainer" parent="DialogueBox/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ks8t7")
+theme_override_font_sizes/font_size = 9
+text = "John Lawpunk"
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxFlat_vkava")
+
+[node name="SpeechStuff" type="HBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SpeechLabel" type="Label" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.1
+theme_override_fonts/font = ExtResource("2_ks8t7")
+theme_override_font_sizes/font_size = 6
+text = "Hello. I am an  NPC. Kill meeeeeeeeeeeeeeeeee"
+autowrap_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff"]
+layout_mode = 2
+theme_override_constants/separation = 0
+theme_override_styles/separator = SubResource("StyleBoxFlat_wl5ax")
+
+[node name="Options" type="MarginContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="Option" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option2" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option3" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option4" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option5" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option6" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option7" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option8" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option9" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
+
+[node name="Option10" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+layout_mode = 2
