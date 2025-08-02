@@ -8,6 +8,7 @@ extends PanelContainer
 @onready var player = $"../.."
 
 var current_npc = ""
+var current_npc_obj : CharacterBody3D
 
 func open_dialogue(npc_name, first_time):
 	current_npc = npc_name
@@ -33,4 +34,10 @@ func open_dialogue(npc_name, first_time):
 func choose_option(option):
 	speech_label.text = dialogue[current_npc]["choices"][option][0]
 	open_dialogue(current_npc, false)
+	
+func close():
+	hide()
+	$"../LeaveButton".hide()
+	if current_npc_obj:
+		current_npc_obj.stop_movement()
 	

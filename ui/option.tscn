@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c51kfxnjyebe5"]
 
 [ext_resource type="Script" uid="uid://dejm0axvk5uk1" path="res://ui/option.gd" id="1_2h7d6"]
-[ext_resource type="FontFile" uid="uid://c7c6426jrb7b4" path="res://fonts/I'm gonna cry.ttf" id="1_3d0ex"]
+[ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_2h7d6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujkg6"]
 bg_color = Color(1, 1, 1, 0.0823529)
@@ -18,6 +18,6 @@ script = ExtResource("1_2h7d6")
 [node name="OptionLabel" type="Label" parent="."]
 texture_filter = 1
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_3d0ex")
+theme_override_fonts/font = ExtResource("2_2h7d6")
 theme_override_font_sizes/font_size = 5
 text = " Choice"

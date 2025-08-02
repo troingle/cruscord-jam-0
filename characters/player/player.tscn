@@ -22,4 +22,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.46366, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 fov = 85.0
 
+[node name="InteractRC" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -5)
+collision_mask = 5
+
 [node name="UI" parent="." instance=ExtResource("2_rkbax")]

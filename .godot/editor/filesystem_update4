@@ -1,10 +1,10 @@
 res://levels/level_1.tscn
-res://ui/ui.tscn
+res://characters/friendly_npc/friendly_npc.gd
 res://ui/option.tscn
-res://ui/leave_button.gd
-res://ui/dialogue.gd
-res://player/player.gd
+res://ui/ui.tscn
 res://misc_nodes/world_environment.tscn
 res://characters/friendly_npc/friendly_npc.tscn
-res://characters/friendly_npc/friendly_npc.gd
-res://characters/friendly_npc/target.tscn
+res://characters/player/player.tscn
+res://characters/player/player.gd
+res://ui/leave_button.gd
+res://ui/dialogue.gd

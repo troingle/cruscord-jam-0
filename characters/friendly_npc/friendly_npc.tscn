@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpu3qw10jn7wc"]
+[gd_scene load_steps=6 format=3 uid="uid://bpu3qw10jn7wc"]
 
 [ext_resource type="Script" uid="uid://cmx7q8r1p0231" path="res://characters/friendly_npc/friendly_npc.gd" id="1_sc2l7"]
 
@@ -6,11 +6,21 @@
 radius = 1.0
 height = 4.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc2l7"]
+shading_mode = 0
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l01yl"]
+material = SubResource("StandardMaterial3D_sc2l7")
 radius = 1.0
 height = 4.0
 
-[node name="FriendlyNPC" type="CharacterBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sc2l7"]
+height = 0.239807
+radius = 1.33447
+
+[node name="FriendlyNPC" type="CharacterBody3D" groups=["friendly_npc"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_sc2l7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -23,17 +33,29 @@ mesh = SubResource("CapsuleMesh_l01yl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
+[node name="DetectWall" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82944, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48343, 0)
+shape = SubResource("CylinderShape3D_sc2l7")
+
 [node name="NPCHead" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="NPCHead"]
-target_position = Vector3(8, 0, 0)
-
-[node name="EndPoint" type="Node3D" parent="NPCHead/RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+target_position = Vector3(0, 0, 8)
 
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
 
+[node name="FailsafeTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[connection signal="body_entered" from="DetectWall" to="." method="_on_detect_wall_body_entered"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="FailsafeTimer" to="." method="_on_failsafe_timer_timeout"]

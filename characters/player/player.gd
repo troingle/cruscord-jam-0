@@ -9,10 +9,11 @@ extends CharacterBody3D
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-@onready var rc = $Head/RayCast3D
+@onready var interact_rc = $Head/InteractRC
 @onready var filter = $CanvasLayer/ColorLimit
 
 @onready var dialogue_box = $UI/DialogueBox
+@onready var leave_button = $UI/LeaveButton
 
 var input_dir
 
@@ -26,6 +27,7 @@ var t_bob = 0.0
 
 func _ready() -> void:
 	dialogue_box.open_dialogue("Test NPC", true)
+	dialogue_box.close()
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -46,6 +48,9 @@ func _physics_process(delta):
 	
 	input_dir = Input.get_vector("left", "right", "forward", "backward")
 	
+	if dialogue_box.visible:
+		input_dir = Vector2(0, 0)
+	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
 	velocity.x = lerp(velocity.x, direction.x * speed, accel * delta)
@@ -53,8 +58,15 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-	if Input.is_action_pressed("quit"):
-		get_tree().quit()
+	if Input.is_action_pressed("exit") and dialogue_box.visible:
+		dialogue_box.close()
+		
+	if Input.is_action_just_pressed("interact") and interact_rc.is_colliding():
+		var collider = interact_rc.get_collider()
+		if collider.is_in_group("friendly_npc"):
+			dialogue_box.open_dialogue(collider.npc_name, true)
+			dialogue_box.current_npc_obj = collider
+			collider.on_the_move = false
 		
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = headbob(t_bob)
