@@ -75,6 +75,10 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = headbob(t_bob)
 	
+	$UI/ChatLog/ScrollContainer/LogText.text = Global.log_text
+	if Input.is_action_just_pressed("tab"):
+		$UI/ChatLog.visible = not $UI/ChatLog.visible
+	
 func check_requirement(num):
 	if num == 0:
 		return true

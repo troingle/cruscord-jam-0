@@ -33,6 +33,15 @@ func open_dialogue(npc_name, first_time):
 	
 func choose_option(option):
 	speech_label.text = dialogue[current_npc]["choices"][option][0]
+	var log_entry = current_npc + ": " + dialogue[current_npc]["choices"][option][0] + "\n---\n"
+	if log_entry not in Global.log_text:
+		Global.log_text = log_entry + Global.log_text
+		
+	if dialogue[current_npc]["choices"][option][2] != "":
+		var thought_entry = dialogue[current_npc]["choices"][option][2] + "\n---\n"
+		if thought_entry not in Global.log_text:
+			Global.log_text = thought_entry + Global.log_text
+		
 	open_dialogue(current_npc, false)
 	
 func close():

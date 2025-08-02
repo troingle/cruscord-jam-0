@@ -8,3 +8,5 @@ res://characters/player/player.tscn
 res://characters/player/player.gd
 res://ui/leave_button.gd
 res://ui/dialogue.gd
+res://ui/global.gd
+res://ui/dialogue_source.gd

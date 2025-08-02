@@ -1,11 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=14 format=3 uid="uid://b61d4dal1kclu"]
 
 [ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
 [ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_obcwv"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="4_vkava"]
 [ext_resource type="Script" uid="uid://bmw6w340i368x" path="res://ui/leave_button.gd" id="5_tf0e0"]
+[ext_resource type="Texture2D" uid="uid://c1ghw4dhk3bn4" path="res://textures/ui_textures/chat_log/bg.png" id="6_bo1jx"]
 [ext_resource type="Texture2D" uid="uid://drfqboj84u45d" path="res://textures/ui_textures/crosshair_normal1.png" id="6_obcwv"]
+[ext_resource type="Texture2D" uid="uid://cca1fuxafrl4t" path="res://textures/ui_textures/chat_log/bottom_text.png" id="7_gycre"]
+[ext_resource type="Texture2D" uid="uid://dp0j5nq88cu8g" path="res://textures/ui_textures/chat_log/top_text.png" id="8_pa1oa"]
+[ext_resource type="Texture2D" uid="uid://deuemaaci8kyy" path="res://textures/ui_textures/chat_log/icon.png" id="9_ay4pc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
 bg_color = Color(0.121569, 0.121569, 0.160784, 1)
@@ -136,7 +140,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="LeaveButton" type="TextureRect" parent="."]
-visible = false
 layout_mode = 0
 offset_left = 697.0
 offset_top = 179.0
@@ -145,6 +148,63 @@ offset_bottom = 211.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_vkava")
 script = ExtResource("5_tf0e0")
+
+[node name="ChatLog" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ChatLogBG" type="TextureRect" parent="ChatLog"]
+layout_mode = 2
+offset_top = 52.0
+offset_right = 2294.0
+offset_bottom = 3209.0
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("6_bo1jx")
+
+[node name="BottomText" type="TextureRect" parent="ChatLog"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 281.0
+offset_right = 932.0
+offset_bottom = 329.0
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("7_gycre")
+
+[node name="TopText" type="TextureRect" parent="ChatLog"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 59.0
+offset_right = 1194.0
+offset_bottom = 175.0
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("8_pa1oa")
+
+[node name="Icon" type="TextureRect" parent="ChatLog"]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 60.0
+offset_right = 539.0
+offset_bottom = 640.0
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("9_ay4pc")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ChatLog"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 72.0
+offset_right = 125.0
+offset_bottom = 273.0
+horizontal_scroll_mode = 0
+
+[node name="LogText" type="Label" parent="ChatLog/ScrollContainer"]
+modulate = Color(0, 0.945098, 0.886275, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 8
+text = "Hello wrodl"
+autowrap_mode = 2
 
 [node name="Crosshair" type="Control" parent="."]
 layout_mode = 1
@@ -169,7 +229,7 @@ offset_right = 1754.0
 offset_bottom = 1240.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.065, 0.065)
+scale = Vector2(0.105, 0.105)
 pivot_offset = Vector2(1754, 1240)
 mouse_filter = 2
 texture = ExtResource("6_obcwv")

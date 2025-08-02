@@ -1,5 +1,8 @@
+Label
+ScrollContainer
 TextureRect
 Control
+MarginContainer
 Timer
 Sprite3D
 RayCast3D
@@ -9,7 +12,3 @@ Marker3D
 SpringArm3D
 HingeJoint3D
 Node3D
-NavigationAgent3D
-NavigationAgent2D
-MeshInstance3D
-CharacterBody3D

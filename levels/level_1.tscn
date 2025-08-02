@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://14g5htvx2spn"]
+[gd_scene load_steps=11 format=3 uid="uid://14g5htvx2spn"]
 
 [ext_resource type="PackedScene" uid="uid://cgp4by0w8v538" path="res://misc_nodes/world_environment.tscn" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://bqe6mh5mitj27" path="res://characters/player/player.tscn" id="2_jirdo"]
-[ext_resource type="Texture2D" uid="uid://p18u6gxq4nme" path="res://textures/world/premade/de_brick.png" id="3_btoec"]
-[ext_resource type="Texture2D" uid="uid://c8ghee8ufiqqb" path="res://textures/world/premade/de_wall.png" id="3_n46q3"]
+[ext_resource type="Texture2D" uid="uid://lm5hqq55x6y6" path="res://textures/world/green_lux_floor.png" id="3_btoec"]
+[ext_resource type="Texture2D" uid="uid://b4y80aa3qluvf" path="res://textures/world/black_lux_wall.png" id="4_btoec"]
 [ext_resource type="PackedScene" uid="uid://bpu3qw10jn7wc" path="res://characters/friendly_npc/friendly_npc.tscn" id="5_n46q3"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="6_btoec"]
 
@@ -14,13 +14,20 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jirdo"]
 shading_mode = 0
 albedo_texture = ExtResource("3_btoec")
+uv1_scale = Vector3(0.745, 0.745, 0.745)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_btoec"]
+shading_mode = 0
+albedo_texture = ExtResource("4_btoec")
 uv1_scale = Vector3(0.31, 0.31, 0.31)
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx6l7"]
 shading_mode = 0
-albedo_texture = ExtResource("3_n46q3")
-uv1_scale = Vector3(0.15, 0.15, 0.15)
+albedo_texture = ExtResource("4_btoec")
+uv1_scale = Vector3(0.32, 0.32, 0.32)
 uv1_triplanar = true
 texture_filter = 0
 
@@ -46,7 +53,7 @@ material = SubResource("StandardMaterial3D_jirdo")
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/TestGround"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2396, 8.73183, -7.33037)
 size = Vector3(48.4587, 1, 37.6606)
-material = SubResource("StandardMaterial3D_jirdo")
+material = SubResource("StandardMaterial3D_btoec")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/TestGround"]
 transform = Transform3D(0.995156, 0.0983124, 0, -0.0983124, 0.995156, 0, 0, 0, 1, -11.4689, -0.508488, -13.5796)
@@ -80,6 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9763, 0.665731, -3.06221)
 
 [node name="Marker" type="Sprite3D" parent="."]
 transform = Transform3D(1.92891, 0, 0, 0, 1.92891, 0, 0, 0, 1.92891, 0, 7.07644, 0)
+visible = false
 billboard = 2
 no_depth_test = true
 texture = ExtResource("6_btoec")
