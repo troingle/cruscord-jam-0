@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var speed = 6.6
 @export var run_speed = 6.6
 @export var accel = 4.7
+@export var jump_velocity = 10.0
 @export var sensitivity = 0.1
 @export var min_angle = -80
 @export var max_angle = 90
@@ -45,6 +46,9 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+		
+	if Input.is_action_pressed("jump") and is_on_floor():
+		velocity.y = jump_velocity
 	
 	input_dir = Input.get_vector("left", "right", "forward", "backward")
 	

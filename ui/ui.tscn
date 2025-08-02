@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=10 format=3 uid="uid://b61d4dal1kclu"]
 
 [ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
 [ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_obcwv"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="4_vkava"]
 [ext_resource type="Script" uid="uid://bmw6w340i368x" path="res://ui/leave_button.gd" id="5_tf0e0"]
+[ext_resource type="Texture2D" uid="uid://drfqboj84u45d" path="res://textures/ui_textures/crosshair_normal1.png" id="6_obcwv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
 bg_color = Color(0.121569, 0.121569, 0.160784, 1)
@@ -144,3 +145,31 @@ offset_bottom = 211.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_vkava")
 script = ExtResource("5_tf0e0")
+
+[node name="Crosshair" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Normal" type="TextureRect" parent="Crosshair"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1754.0
+offset_top = -1240.0
+offset_right = 1754.0
+offset_bottom = 1240.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.065, 0.065)
+pivot_offset = Vector2(1754, 1240)
+mouse_filter = 2
+texture = ExtResource("6_obcwv")

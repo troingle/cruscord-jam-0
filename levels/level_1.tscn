@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://14g5htvx2spn"]
 
 [ext_resource type="PackedScene" uid="uid://cgp4by0w8v538" path="res://misc_nodes/world_environment.tscn" id="1_vn7o3"]
-[ext_resource type="Texture2D" uid="uid://ivh3rbao56jw" path="res://textures/world/premade/floor_brick.png" id="2_bt44k"]
 [ext_resource type="PackedScene" uid="uid://bqe6mh5mitj27" path="res://characters/player/player.tscn" id="2_jirdo"]
-[ext_resource type="Texture2D" uid="uid://dhbpig8shrsjx" path="res://textures/world/premade/brick1.png" id="3_kx6l7"]
+[ext_resource type="Texture2D" uid="uid://p18u6gxq4nme" path="res://textures/world/premade/de_brick.png" id="3_btoec"]
+[ext_resource type="Texture2D" uid="uid://c8ghee8ufiqqb" path="res://textures/world/premade/de_wall.png" id="3_n46q3"]
 [ext_resource type="PackedScene" uid="uid://bpu3qw10jn7wc" path="res://characters/friendly_npc/friendly_npc.tscn" id="5_n46q3"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="6_btoec"]
 
@@ -13,15 +13,16 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Arr
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jirdo"]
 shading_mode = 0
-albedo_texture = ExtResource("2_bt44k")
-uv1_scale = Vector3(0.165, 0.165, 0.165)
+albedo_texture = ExtResource("3_btoec")
+uv1_scale = Vector3(0.31, 0.31, 0.31)
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kx6l7"]
 shading_mode = 0
-albedo_texture = ExtResource("3_kx6l7")
-uv1_scale = Vector3(0.165, 0.165, 0.165)
+albedo_texture = ExtResource("3_n46q3")
+uv1_scale = Vector3(0.15, 0.15, 0.15)
 uv1_triplanar = true
+texture_filter = 0
 
 [node name="Level1" type="Node3D"]
 
@@ -42,14 +43,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2396, -0.508488, 1.7734)
 size = Vector3(48.4587, 1, 19.4531)
 material = SubResource("StandardMaterial3D_jirdo")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/TestGround"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2396, 8.73183, -7.33037)
+size = Vector3(48.4587, 1, 37.6606)
+material = SubResource("StandardMaterial3D_jirdo")
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/TestGround"]
 transform = Transform3D(0.995156, 0.0983124, 0, -0.0983124, 0.995156, 0, 0, 0, 1, -11.4689, -0.508488, -13.5796)
 size = Vector3(48, 1, 13.2076)
 material = SubResource("StandardMaterial3D_jirdo")
 
 [node name="Wall" type="CSGBox3D" parent="NavigationRegion3D/TestGround"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.53703, 3.97566, -19.5159)
-size = Vector3(33.0536, 1, 13)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -11.8923, 3.97566, -19.5159)
+size = Vector3(49.7641, 1, 13)
 material = SubResource("StandardMaterial3D_kx6l7")
 
 [node name="Wall2" type="CSGBox3D" parent="NavigationRegion3D/TestGround"]
