@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=15 format=3 uid="uid://b61d4dal1kclu"]
 
+[ext_resource type="Texture2D" uid="uid://f6kj2cmw1bim" path="res://textures/ui_textures/chatbox.png" id="1_bi8hs"]
 [ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
 [ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_obcwv"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
@@ -9,23 +10,15 @@
 [ext_resource type="Texture2D" uid="uid://drfqboj84u45d" path="res://textures/ui_textures/crosshair_normal1.png" id="6_obcwv"]
 [ext_resource type="Texture2D" uid="uid://cca1fuxafrl4t" path="res://textures/ui_textures/chat_log/bottom_text.png" id="7_gycre"]
 [ext_resource type="Texture2D" uid="uid://dp0j5nq88cu8g" path="res://textures/ui_textures/chat_log/top_text.png" id="8_pa1oa"]
-[ext_resource type="Texture2D" uid="uid://deuemaaci8kyy" path="res://textures/ui_textures/chat_log/icon.png" id="9_ay4pc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
-bg_color = Color(0.121569, 0.121569, 0.160784, 1)
-border_width_top = 3
-border_color = Color(0.254902, 0.227451, 0.258824, 1)
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vkava"]
-bg_color = Color(0, 0, 0, 0)
-border_width_bottom = 3
-border_color = Color(0.254902, 0.227451, 0.258824, 1)
-border_blend = true
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrmpd"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wl5ax"]
-bg_color = Color(0.254902, 0.227451, 0.258824, 1)
-border_width_left = 1
-border_color = Color(0.254902, 0.227451, 0.258824, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ay4pc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bi8hs"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -42,8 +35,22 @@ anchor_left = 0.65
 anchor_top = 0.1
 anchor_right = 0.95
 anchor_bottom = 0.35
+offset_left = 6.80002
+offset_top = -7.2
+offset_right = 33.4
+offset_bottom = 44.8
 theme_override_styles/panel = SubResource("StyleBoxFlat_ks8t7")
 script = ExtResource("1_nb4k0")
+
+[node name="BGContainer" type="MarginContainer" parent="DialogueBox"]
+layout_mode = 2
+theme_override_constants/margin_top = -45
+theme_override_constants/margin_bottom = 5
+
+[node name="DialogueBG" type="TextureRect" parent="DialogueBox/BGContainer"]
+layout_mode = 2
+texture = ExtResource("1_bi8hs")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogueBox"]
 layout_mode = 2
@@ -62,81 +69,86 @@ size_flags_horizontal = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide"]
 layout_mode = 2
 
+[node name="HSeparator" type="HSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hrmpd")
+
+[node name="VSeparator" type="VSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ay4pc")
+
 [node name="NameLabel" type="Label" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 9
+theme_override_font_sizes/font_size = 17
 text = "John Lawpunk"
 autowrap_mode = 2
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_vkava")
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hrmpd")
 
-[node name="SpeechStuff" type="HBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBox"]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="SpeechLabel" type="Label" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff"]
+[node name="SpeechContainer" type="MarginContainer" parent="DialogueBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.37
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="SpeechLabel" type="Label" parent="DialogueBox/HBoxContainer/SpeechContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.1
 theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 6
-text = "Hello. I am an  NPC. Kill meeeeeeeeeeeeeeeeee"
+theme_override_font_sizes/font_size = 13
+text = "Hello. I am an  NPC. Kill me. I am a worhtless sack of flesh. I do not exist. THis is dialogue. Yes. I do not have anything els e to write."
 autowrap_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff"]
+[node name="VSeparator" type="VSeparator" parent="DialogueBox/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0
-theme_override_styles/separator = SubResource("StyleBoxFlat_wl5ax")
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_bi8hs")
 
-[node name="Options" type="MarginContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
-
-[node name="ScrollContainer" type="ScrollContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer"]
+[node name="Options" type="MarginContainer" parent="DialogueBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 0
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_bottom = 40
 
-[node name="Option" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogueBox/HBoxContainer/Options"]
 layout_mode = 2
 
-[node name="Option2" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/HBoxContainer/Options/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Option" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
-[node name="Option3" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="Option2" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
-[node name="Option4" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="Option3" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
-[node name="Option5" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="Option4" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
-[node name="Option6" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="Option5" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
-[node name="Option7" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
-layout_mode = 2
-
-[node name="Option8" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
-layout_mode = 2
-
-[node name="Option9" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
-layout_mode = 2
-
-[node name="Option10" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
+[node name="Option6" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
 [node name="LeaveButton" type="TextureRect" parent="."]
@@ -149,62 +161,64 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_vkava")
 script = ExtResource("5_tf0e0")
 
-[node name="ChatLog" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="ChatLog" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 0.2
+anchor_bottom = 0.7
 
 [node name="ChatLogBG" type="TextureRect" parent="ChatLog"]
 layout_mode = 2
-offset_top = 52.0
-offset_right = 2294.0
-offset_bottom = 3209.0
-scale = Vector2(0.075, 0.075)
+mouse_filter = 2
 texture = ExtResource("6_bo1jx")
+expand_mode = 1
 
-[node name="BottomText" type="TextureRect" parent="ChatLog"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 281.0
-offset_right = 932.0
-offset_bottom = 329.0
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("7_gycre")
+[node name="VBoxContainer" type="VBoxContainer" parent="ChatLog"]
+layout_mode = 2
 
-[node name="TopText" type="TextureRect" parent="ChatLog"]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 59.0
-offset_right = 1194.0
-offset_bottom = 175.0
-scale = Vector2(0.075, 0.075)
+[node name="TopTextContianer" type="MarginContainer" parent="ChatLog/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+
+[node name="TextureRect" type="TextureRect" parent="ChatLog/VBoxContainer/TopTextContianer"]
+layout_mode = 2
 texture = ExtResource("8_pa1oa")
+expand_mode = 5
 
-[node name="Icon" type="TextureRect" parent="ChatLog"]
-layout_mode = 0
-offset_left = 131.0
-offset_top = 60.0
-offset_right = 539.0
-offset_bottom = 640.0
-scale = Vector2(0.055, 0.055)
-texture = ExtResource("9_ay4pc")
+[node name="MarginContainer" type="MarginContainer" parent="ChatLog/VBoxContainer"]
+texture_filter = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 19
+theme_override_constants/margin_top = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ChatLog"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 72.0
-offset_right = 125.0
-offset_bottom = 273.0
+[node name="ScrollContainer" type="ScrollContainer" parent="ChatLog/VBoxContainer/MarginContainer"]
+layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="LogText" type="Label" parent="ChatLog/ScrollContainer"]
+[node name="LogText" type="Label" parent="ChatLog/VBoxContainer/MarginContainer/ScrollContainer"]
 modulate = Color(0, 0.945098, 0.886275, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 8
-text = "Hello wrodl"
+theme_override_font_sizes/font_size = 15
+text = "Test"
 autowrap_mode = 2
+
+[node name="BottomTextContainer" type="MarginContainer" parent="ChatLog/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="ChatLog/VBoxContainer/BottomTextContainer"]
+layout_mode = 2
+texture = ExtResource("7_gycre")
+expand_mode = 5
 
 [node name="Crosshair" type="Control" parent="."]
 layout_mode = 1
@@ -218,18 +232,12 @@ mouse_filter = 2
 [node name="Normal" type="TextureRect" parent="Crosshair"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1754.0
-offset_top = -1240.0
-offset_right = 1754.0
-offset_bottom = 1240.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.105, 0.105)
+scale = Vector2(0.155, 0.155)
 pivot_offset = Vector2(1754, 1240)
 mouse_filter = 2
 texture = ExtResource("6_obcwv")

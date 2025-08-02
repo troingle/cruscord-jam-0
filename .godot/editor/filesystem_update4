@@ -10,3 +10,4 @@ res://ui/leave_button.gd
 res://ui/dialogue.gd
 res://ui/global.gd
 res://ui/dialogue_source.gd
+res://ui/option.gd

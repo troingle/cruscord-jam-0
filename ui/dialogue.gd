@@ -3,7 +3,7 @@ extends PanelContainer
 @onready var dialogue = DialogueSource.dialogue
 
 @onready var name_label = $MarginContainer/HBoxContainer/LeftSide/VBoxContainer/NameLabel
-@onready var speech_label = $MarginContainer/HBoxContainer/LeftSide/VBoxContainer/SpeechStuff/SpeechLabel
+@onready var speech_label = $HBoxContainer/SpeechContainer/SpeechLabel
 
 @onready var player = $"../.."
 
@@ -13,6 +13,7 @@ var current_npc_obj : CharacterBody3D
 func open_dialogue(npc_name, first_time):
 	current_npc = npc_name
 	show()
+	$BGContainer/DialogueBG.show()
 	$"../LeaveButton".show()
 	name_label.text = current_npc
 	
@@ -47,6 +48,7 @@ func choose_option(option):
 func close():
 	hide()
 	$"../LeaveButton".hide()
+	$BGContainer/DialogueBG.hide()
 	if current_npc_obj:
 		current_npc_obj.stop_movement()
 	

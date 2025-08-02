@@ -3,21 +3,20 @@
 [ext_resource type="Script" uid="uid://dejm0axvk5uk1" path="res://ui/option.gd" id="1_2h7d6"]
 [ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_2h7d6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujkg6"]
-bg_color = Color(1, 1, 1, 0.0823529)
-border_width_bottom = 2
-border_color = Color(0.254902, 0.227451, 0.258824, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2h7d6"]
 
 [node name="Option" type="PanelContainer" groups=["option"]]
-custom_minimum_size = Vector2(50, 15)
+custom_minimum_size = Vector2(20, 5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_ujkg6")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2h7d6")
 script = ExtResource("1_2h7d6")
 
 [node name="OptionLabel" type="Label" parent="."]
+modulate = Color(0.980392, 0.0117647, 0.682353, 1)
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_2h7d6")
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 12
 text = " Choice"
+uppercase = true

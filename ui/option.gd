@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @onready var option_label = $OptionLabel
-@onready var dialogue_box = $"../../../../../../../../.."
+@onready var dialogue_box = $"../../../../.."
 
 func _process(delta: float) -> void:
 	if option_label.text == "":

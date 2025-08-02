@@ -1,4 +1,3 @@
 extends Node
 
-var log_text = "
-"
+var log_text = ""
