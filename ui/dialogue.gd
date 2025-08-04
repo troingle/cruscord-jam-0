@@ -38,8 +38,8 @@ func choose_option(option):
 	if log_entry not in Global.log_text:
 		Global.log_text = log_entry + Global.log_text
 		
-	if dialogue[current_npc]["choices"][option][2] != "":
-		var thought_entry = dialogue[current_npc]["choices"][option][2] + "\n---\n"
+	if dialogue[current_npc]["choices"][option][3] != "":
+		var thought_entry = dialogue[current_npc]["choices"][option][3] + "\n---\n"
 		if thought_entry not in Global.log_text:
 			Global.log_text = thought_entry + Global.log_text
 		

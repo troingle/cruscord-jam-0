@@ -15,10 +15,14 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var wait_timer = $WaitTimer
 @onready var failsafe_timer = $FailsafeTimer
 
+@onready var player = $"../../Player"
+
 var target_pos = Vector3.ZERO
 var on_the_move = false
 
 var rng = RandomNumberGenerator.new()
+
+var hp = 100
 
 func _ready() -> void:
 	find_new_target_pos()
@@ -72,5 +76,7 @@ func _on_detect_wall_body_entered(body: Node3D) -> void:
 	stop_movement()
 
 func _on_failsafe_timer_timeout() -> void:
-	stop_movement()
-	print("FAILSAFE ACTIVATED")
+	if not player.dialogue_box.visible:
+		stop_movement()
+	else:
+		failsafe_timer.start()

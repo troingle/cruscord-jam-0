@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
+var movement_speed = 0.0
 @export var speed = 6.6
-@export var run_speed = 6.6
+@export var crouch_speed = 6.6
 @export var accel = 4.7
 @export var jump_velocity = 10.0
 @export var sensitivity = 0.1
@@ -16,6 +17,10 @@ extends CharacterBody3D
 @onready var dialogue_box = $UI/DialogueBox
 @onready var leave_button = $UI/LeaveButton
 
+@onready var gun_cooldown_timer = $Timers/GunCooldown
+@onready var gun_rc = $Head/GunRC
+@onready var reload_timer = $Timers/ReloadTimer
+
 var input_dir
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -25,6 +30,11 @@ var stand_height : float
 var bob_freq = 1.5
 var bob_amp = 0.1
 var t_bob = 0.0
+
+var normal_head_pos = 3.464
+var crouch_head_pos = 1.91
+
+var gun_on_cooldown = false
 
 func _ready() -> void:
 	dialogue_box.open_dialogue("Test NPC", true)
@@ -57,8 +67,8 @@ func _physics_process(delta):
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
-	velocity.x = lerp(velocity.x, direction.x * speed, accel * delta)
-	velocity.z = lerp(velocity.z, direction.z * speed, accel * delta)
+	velocity.x = lerp(velocity.x, direction.x * movement_speed, accel * delta)
+	velocity.z = lerp(velocity.z, direction.z * movement_speed, accel * delta)
 	
 	move_and_slide()
 
@@ -78,6 +88,34 @@ func _physics_process(delta):
 	$UI/ChatLog/VBoxContainer/MarginContainer/ScrollContainer/LogText.text = Global.log_text
 	if Input.is_action_just_pressed("tab"):
 			$UI/ChatLog.visible = not $UI/ChatLog.visible
+			
+	if Input.is_action_pressed("crouch"):
+		head.position.y = crouch_head_pos
+		movement_speed = crouch_speed
+	else:
+		head.position.y = normal_head_pos
+		movement_speed = speed
+	
+	$UI/Crosshair/BarContainer/Bar.scale.x = gun_cooldown_timer.time_left * 0.65
+	
+	# GUNS
+	gun_rc.target_position.z = -Guns.guns[Global.gun]["range"]
+		
+	if Input.is_action_pressed("shoot") and not gun_on_cooldown and (Global.ammo > 0 or not Guns.guns[Global.gun]["requires_ammo"]):
+		gun_on_cooldown = true
+
+		if gun_rc.is_colliding():
+			var target = gun_rc.get_collider()
+			target.hp -= Guns.guns[Global.gun]["damage"]
+			print("hit")
+		
+		if Guns.guns[Global.gun]["requires_ammo"]:
+			Global.ammo -= 1
+		gun_cooldown_timer.wait_time = Guns.guns[Global.gun]["cooldown"]
+		gun_cooldown_timer.start()
+		
+	if Input.is_action_just_pressed("reload") and Global.ammo < Guns.guns[Global.gun]["max_ammo"]:
+		reload_timer.start()
 	
 func check_requirement(num):
 	if num == 0:
@@ -88,3 +126,12 @@ func headbob(time):
 	var pos = Vector3.ZERO
 	pos.y = sin(time * bob_freq) * bob_amp
 	return pos
+
+func _on_gun_cooldown_timeout() -> void:
+	gun_on_cooldown = false
+
+func _on_reload_timer_timeout() -> void:
+	Global.reserve_ammo -= abs(Guns.guns[Global.gun]["max_ammo"] - Global.ammo)
+	Global.ammo = Guns.guns[Global.gun]["max_ammo"]
+	
+	
