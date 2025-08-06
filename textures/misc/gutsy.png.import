@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxoswcp6e3nlj"
-path.s3tc="res://.godot/imported/skybox1.png-333253e96e8b97119c1824af9bc906b3.s3tc.ctex"
+uid="uid://cw8ag2hxb0ei6"
+path.s3tc="res://.godot/imported/gutsy.png-1b50a27fdbd2e99da6b1755a02e20373.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/world/skybox1.png"
-dest_files=["res://.godot/imported/skybox1.png-333253e96e8b97119c1824af9bc906b3.s3tc.ctex"]
+source_file="res://textures/misc/gutsy.png"
+dest_files=["res://.godot/imported/gutsy.png-1b50a27fdbd2e99da6b1755a02e20373.s3tc.ctex"]
 
 [params]
 

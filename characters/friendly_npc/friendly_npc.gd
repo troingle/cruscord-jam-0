@@ -30,6 +30,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if on_the_move:
 		var dir = Vector3()
+		$BodyTest/AnimationPlayer.play("RunForward")
 
 		nav.target_position = target_pos
 
@@ -44,13 +45,25 @@ func _physics_process(delta: float) -> void:
 			velocity.y -= gravity * delta
 		else:
 			velocity.y = 0
-			
+		
+		$BodyTest.look_at(global_position + dir, Vector3.UP)
+		$BodyTest.rotation.x = 0
+		
 		move_and_slide()
 
 		if global_position.distance_to(target_pos) < 2.5:
-			stop_movement()
+			stop_movement(false)
+	else:
+		$BodyTest/AnimationPlayer.play("CombatIdle")
 			
 	$"../../Marker".global_position = target_pos
+	
+	
+	if hp < 0:
+		die()
+
+func die():
+	queue_free()
 
 func find_new_target_pos():
 	var end_point = rc.global_position + rc.global_transform.basis.z * rc.target_position.z
@@ -62,21 +75,24 @@ func find_new_target_pos():
 	on_the_move = true
 	failsafe_timer.start()
 	
-func stop_movement():
+func stop_movement(instant):
 	on_the_move = false
 	randomize()
-	wait_timer.wait_time = rng.randf_range(2.0, 8.5)
-	wait_timer.start()
+	if not instant:
+		wait_timer.wait_time = rng.randf_range(2.0, 8.5)
+		wait_timer.start()
+	else:
+		find_new_target_pos()
 	failsafe_timer.stop()
 
 func _on_wait_timer_timeout() -> void:
 	find_new_target_pos()
 	
 func _on_detect_wall_body_entered(body: Node3D) -> void:
-	stop_movement()
+	stop_movement(true)
 
 func _on_failsafe_timer_timeout() -> void:
 	if not player.dialogue_box.visible:
-		stop_movement()
+		stop_movement(false)
 	else:
 		failsafe_timer.start()

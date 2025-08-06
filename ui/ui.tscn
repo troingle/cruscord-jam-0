@@ -223,6 +223,7 @@ texture = ExtResource("7_gycre")
 expand_mode = 5
 
 [node name="Crosshair" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

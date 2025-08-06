@@ -2,6 +2,6 @@ extends Node
 
 var log_text = ""
 
-var gun = "Fist"
-var ammo = 0
-var reserve_ammo = 100
+var gun = "Pistol"
+var ammo = 12
+var reserve_ammo = 24

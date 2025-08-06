@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckff23dy8r6j6"]
+
+[ext_resource type="Texture2D" uid="uid://my4tis42pa41" path="res://textures/misc/decal.png" id="1_7wliw"]
+
+[node name="BloodDecal" type="Decal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+size = Vector3(5, 2, 5)
+texture_albedo = ExtResource("1_7wliw")
+modulate = Color(1, 0, 0, 0.733333)
