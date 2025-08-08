@@ -22,7 +22,7 @@ var on_the_move = false
 
 var rng = RandomNumberGenerator.new()
 
-var hp = 100
+var hp = 1
 
 func _ready() -> void:
 	find_new_target_pos()
@@ -30,7 +30,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if on_the_move:
 		var dir = Vector3()
-		$BodyTest/AnimationPlayer.play("RunForward")
+		#$BodyMesh/AnimationPlayer.play("RunForward")
 
 		nav.target_position = target_pos
 
@@ -46,15 +46,15 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y = 0
 		
-		$BodyTest.look_at(global_position + dir, Vector3.UP)
-		$BodyTest.rotation.x = 0
+		$BodyMesh.look_at(global_position + dir, Vector3.UP)
+		$BodyMesh.rotation.x = 0
 		
 		move_and_slide()
 
 		if global_position.distance_to(target_pos) < 2.5:
 			stop_movement(false)
 	else:
-		$BodyTest/AnimationPlayer.play("CombatIdle")
+		pass#$BodyMesh/AnimationPlayer.play("CombatIdle")
 			
 	$"../../Marker".global_position = target_pos
 	

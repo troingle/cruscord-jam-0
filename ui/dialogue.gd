@@ -50,5 +50,5 @@ func close():
 	$"../LeaveButton".hide()
 	$BGContainer/DialogueBG.hide()
 	if current_npc_obj:
-		current_npc_obj.stop_movement()
+		current_npc_obj.stop_movement(false)
 	

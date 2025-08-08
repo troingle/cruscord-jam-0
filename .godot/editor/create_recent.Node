@@ -1,5 +1,5 @@
-AudioStreamPlayer3D
 Node3D
+AudioStreamPlayer3D
 CPUParticles3D
 GPUParticles3D
 Decal
@@ -12,4 +12,3 @@ Label
 Timer
 RayCast3D
 VSeparator
-VBoxContainer

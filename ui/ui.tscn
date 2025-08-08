@@ -33,10 +33,10 @@ script = ExtResource("1_hrmpd")
 [node name="DialogueBox" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.65
+anchor_left = 0.6
 anchor_top = 0.1
 anchor_right = 0.95
-anchor_bottom = 0.35
+anchor_bottom = 0.4
 offset_left = 6.80002
 offset_top = -7.2
 offset_right = 33.4
@@ -67,6 +67,7 @@ layout_mode = 2
 [node name="LeftSide" type="MarginContainer" parent="DialogueBox/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DialogueBox/MarginContainer/HBoxContainer/LeftSide"]
 layout_mode = 2
@@ -85,7 +86,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_ay4pc")
 texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 21
 text = "John Lawpunk"
 autowrap_mode = 2
 uppercase = true
@@ -103,7 +104,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.37
 theme_override_constants/margin_left = 13
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_top = 19
 theme_override_constants/margin_right = 25
 
 [node name="SpeechLabel" type="Label" parent="DialogueBox/HBoxContainer/SpeechContainer"]
@@ -113,7 +114,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_obcwv")
 theme_override_font_sizes/font_size = 13
-text = "Hello. I am an  NPC. Kill me. I am a worhtless sack of flesh. I do not exist. THis is dialogue. Yes. I do not have anything els e to write."
+text = "dialogue"
 autowrap_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="DialogueBox/HBoxContainer"]
@@ -124,7 +125,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_bi8hs")
 [node name="Options" type="MarginContainer" parent="DialogueBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_top = 48
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 63
 theme_override_constants/margin_bottom = 40
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DialogueBox/HBoxContainer/Options"]
@@ -155,10 +157,10 @@ layout_mode = 2
 
 [node name="LeaveButton" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 697.0
-offset_top = 179.0
-offset_right = 761.0
-offset_bottom = 211.0
+offset_left = 1152.0
+offset_top = 306.0
+offset_right = 1216.0
+offset_bottom = 338.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_vkava")
 script = ExtResource("5_tf0e0")
@@ -194,7 +196,7 @@ expand_mode = 5
 texture_filter = 2
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 19
+theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 10
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ChatLog/VBoxContainer/MarginContainer"]
@@ -206,7 +208,7 @@ modulate = Color(0, 0.945098, 0.886275, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 13
 text = "Test"
 autowrap_mode = 2
 
@@ -223,7 +225,6 @@ texture = ExtResource("7_gycre")
 expand_mode = 5
 
 [node name="Crosshair" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=4 uid="uid://bpu3qw10jn7wc"]
+[gd_scene load_steps=12 format=4 uid="uid://gr7muq4dfrr4"]
 
-[ext_resource type="Script" uid="uid://cmx7q8r1p0231" path="res://characters/friendly_npc/friendly_npc.gd" id="1_sc2l7"]
+[ext_resource type="Script" uid="uid://blvt0ahsir1kx" path="res://characters/enemy/enemy.gd" id="1_dxaiu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l01yl"]
 radius = 1.0
@@ -128,6 +128,7 @@ bind/28/pose = Transform3D(1.42497e-08, 1.84219e-06, -0.612017, -0.612013, -6.83
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uee6j"]
 shading_mode = 0
+albedo_color = Color(1, 0, 0.0156863, 1)
 
 [sub_resource type="Animation" id="Animation_u7qoj"]
 resource_name = "Action"
@@ -213,11 +214,10 @@ _data = {
 &"Action_001": SubResource("Animation_jn425")
 }
 
-[node name="FriendlyNPC" type="CharacterBody3D" groups=["friendly_npc"]]
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 13
 collision_mask = 13
-script = ExtResource("1_sc2l7")
-npc_name = "Cigarette Guy"
+script = ExtResource("1_dxaiu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -450,12 +450,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uee6j")
 libraries = {
 &"": SubResource("AnimationLibrary_ffmxh")
 }
-
-[node name="NPCHead" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="RayCast3D" type="RayCast3D" parent="NPCHead"]
-target_position = Vector3(0, 0, 8)
 
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true

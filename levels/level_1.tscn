@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://14g5htvx2spn"]
+[gd_scene load_steps=12 format=3 uid="uid://14g5htvx2spn"]
 
 [ext_resource type="PackedScene" uid="uid://cgp4by0w8v538" path="res://misc_nodes/world_environment.tscn" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://bqe6mh5mitj27" path="res://characters/player/player.tscn" id="2_jirdo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b4y80aa3qluvf" path="res://textures/world/black_lux_wall.png" id="4_btoec"]
 [ext_resource type="PackedScene" uid="uid://bpu3qw10jn7wc" path="res://characters/friendly_npc/friendly_npc.tscn" id="5_n46q3"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="6_btoec"]
+[ext_resource type="PackedScene" uid="uid://gr7muq4dfrr4" path="res://characters/enemy/enemy.tscn" id="7_gwceb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_kx6l7"]
 vertices = PackedVector3Array(-32.7603, 10.9757, 10.7341, -32.7603, 10.9757, 18.4841, -32.2603, 10.9757, 10.4841, 12.4897, 10.9757, 10.4841, 12.7397, 10.9757, 18.2341, 12.9897, 10.9757, 10.7341, -32.0103, 10.9757, -19.7659, -32.2603, 10.9757, -35.5159, -32.5103, 10.9757, -20.0159, -36.5103, 10.9757, -19.5159, -32.7603, 10.9757, -19.5159, -33.0103, 10.9757, 10.2341, -39.5103, 10.9757, 10.2341, 14.4897, 10.9757, 10.4841, 12.9897, 10.9757, 9.98413, 12.7397, 10.9757, 9.98413, -32.2603, 10.9757, 10.2341, -32.5103, 10.9757, -19.0159, -32.0103, 10.9757, -19.5159, 12.9897, 10.9757, -29.2659, 12.7397, 10.9757, -19.2659, 12.4897, 10.9757, -19.7659, -32.7603, 10.9757, 9.73413, -35.0103, 9.72566, -25.7659, -35.0103, 9.72566, -20.7659, -33.5103, 9.72566, -20.7659, -33.5103, 9.72566, -25.7659, -31.2603, 9.72566, -25.7659, -31.2603, 9.72566, -20.7659, 11.7397, 9.72566, -20.7659, 11.7397, 9.72566, -25.7659, -35.0103, 0.475659, -18.5159, -35.0103, 0.475659, 9.23413, -33.5103, 0.475659, 9.23413, -33.5103, 0.475659, -18.5159, -35.0103, 9.72566, -18.5159, -35.0103, 9.72566, 9.23413, -33.5103, 9.72566, 9.23413, -33.5103, 9.72566, -18.5159, -31.2603, 2.47566, -18.5159, -31.2603, 2.47566, -11.0159, -26.0103, 2.47566, -11.0159, -26.0103, 2.47566, -18.5159, -31.2603, 9.72566, -18.5159, -31.2603, 9.72566, 9.23413, 11.7397, 9.72566, 9.23413, 11.7397, 9.72566, -18.5159, 2.2397, 0.475659, 9.23413, 2.4897, 0.475659, -7.51587, 0.7397, 0.475659, -7.76587, -25.0103, 0.475659, -10.2659, -31.2603, 0.475659, -10.0159, -31.2603, 0.475659, 9.23413, 0.7397, 0.475659, -18.5159, -25.0103, 0.475659, -18.5159, 11.7397, 0.475659, 9.23413, 11.7397, 0.475659, -7.51587)
@@ -89,6 +90,13 @@ material = SubResource("StandardMaterial3D_kx6l7")
 
 [node name="FriendlyNPC" parent="FriendlyNPCs" instance=ExtResource("5_n46q3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9763, 0.665731, -3.06221)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("7_gwceb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13402, 0.265767, -9.43943)
+speed = 4.0
+accel = 3.0
 
 [node name="Marker" type="Sprite3D" parent="."]
 transform = Transform3D(1.92891, 0, 0, 0, 1.92891, 0, 0, 0, 1.92891, 0, 7.07644, 0)

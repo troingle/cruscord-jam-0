@@ -101,7 +101,7 @@ func _physics_process(delta):
 	# GUNS
 	gun_rc.target_position.z = -Guns.guns[Global.gun]["range"]
 		
-	if Input.is_action_pressed("shoot") and not gun_on_cooldown and (Global.ammo > 0 or not Guns.guns[Global.gun]["requires_ammo"]):
+	if Input.is_action_pressed("shoot") and not gun_on_cooldown and (Global.ammo > 0 or not Guns.guns[Global.gun]["requires_ammo"]) and not dialogue_box.visible:
 		gun_on_cooldown = true
 		if gun_rc.is_colliding():
 			var target = gun_rc.get_collider()
