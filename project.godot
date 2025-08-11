@@ -37,6 +37,7 @@ enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 option=""
 friendly_npc=""
 enemy=""
+player=""
 
 [input]
 
