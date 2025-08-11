@@ -1,5 +1,5 @@
-res://characters/generic
 res://misc_nodes
-res://characters/player
 res://ui
+res://characters/generic
+res://characters/player
 res://characters/friendly_npc

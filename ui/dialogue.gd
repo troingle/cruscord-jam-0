@@ -15,7 +15,7 @@ func open_dialogue(npc_name, first_time):
 	show()
 	$BGContainer/DialogueBG.show()
 	$"../LeaveButton".show()
-	name_label.text = current_npc
+	$MarginContainer/HBoxContainer/LeftSide/VBoxContainer/NameLabel.text = current_npc
 	
 	if first_time:
 		speech_label.text = dialogue[current_npc]["start_dialogue"]

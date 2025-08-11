@@ -11,6 +11,9 @@ sky_material = SubResource("PanoramaSkyMaterial_w7bxa")
 [sub_resource type="Environment" id="Environment_dq8g5"]
 background_mode = 2
 sky = SubResource("Sky_dq8g5")
+fog_enabled = true
+fog_light_color = Color(0.187111, 0.168617, 0.326985, 1)
+fog_density = 0.199
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = SubResource("Environment_dq8g5")

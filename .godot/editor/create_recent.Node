@@ -1,3 +1,8 @@
+MeshInstance3D
+ColorRect
+SubViewport
+SubViewportContainer
+RayCast3D
 Node3D
 AudioStreamPlayer3D
 CPUParticles3D
@@ -5,10 +10,6 @@ GPUParticles3D
 Decal
 CPUParticles2D
 Control
-ColorRect
 TextureRect
 MarginContainer
 Label
-Timer
-RayCast3D
-VSeparator

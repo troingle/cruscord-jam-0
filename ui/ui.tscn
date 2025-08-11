@@ -1,16 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=19 format=3 uid="uid://b61d4dal1kclu"]
 
 [ext_resource type="Texture2D" uid="uid://f6kj2cmw1bim" path="res://textures/ui_textures/chatbox.png" id="1_bi8hs"]
 [ext_resource type="Script" uid="uid://cdk4k0bnwj0l5" path="res://ui/ui.gd" id="1_hrmpd"]
 [ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
+[ext_resource type="Shader" uid="uid://dif2emifuvrs8" path="res://ui/limit.gdshader" id="2_hrmpd"]
 [ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_obcwv"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
+[ext_resource type="Texture2D" uid="uid://c7fww65qtegt2" path="res://ui/palettes/Mission Briefing.png" id="3_x7jpl"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://textures/ui_textures/LEAVe.png" id="4_vkava"]
 [ext_resource type="Script" uid="uid://bmw6w340i368x" path="res://ui/leave_button.gd" id="5_tf0e0"]
 [ext_resource type="Texture2D" uid="uid://c1ghw4dhk3bn4" path="res://textures/ui_textures/chat_log/bg.png" id="6_bo1jx"]
 [ext_resource type="Texture2D" uid="uid://drfqboj84u45d" path="res://textures/ui_textures/crosshair_normal1.png" id="6_obcwv"]
 [ext_resource type="Texture2D" uid="uid://cca1fuxafrl4t" path="res://textures/ui_textures/chat_log/bottom_text.png" id="7_gycre"]
 [ext_resource type="Texture2D" uid="uid://dp0j5nq88cu8g" path="res://textures/ui_textures/chat_log/top_text.png" id="8_pa1oa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7jpl"]
+shader = ExtResource("2_hrmpd")
+shader_parameter/color_ramp = ExtResource("3_x7jpl")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -29,6 +35,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hrmpd")
+
+[node name="ColorLimit" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_x7jpl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DialogueBox" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -225,6 +241,7 @@ texture = ExtResource("7_gycre")
 expand_mode = 5
 
 [node name="Crosshair" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
