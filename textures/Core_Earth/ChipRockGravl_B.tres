@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://brh203fe8psvt"]
+
+[ext_resource type="Texture2D" uid="uid://bf6bum3irbxat" path="res://textures/Core_Earth/ChipRockGravl_B.png" id="1_38y4l"]
+
+[resource]
+albedo_texture = ExtResource("1_38y4l")
+metallic_specular = 0.0
+texture_filter = 2

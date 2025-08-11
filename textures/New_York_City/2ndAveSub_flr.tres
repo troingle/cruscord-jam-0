@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cei7vp68hfccr"]
+
+[ext_resource type="Texture2D" uid="uid://dfgeiv8o11qiq" path="res://textures/New_York_City/2ndAveSub_flr.png" id="1_5g8qe"]
+
+[resource]
+albedo_texture = ExtResource("1_5g8qe")
+metallic_specular = 0.0
+texture_filter = 2

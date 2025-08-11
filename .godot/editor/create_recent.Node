@@ -1,3 +1,5 @@
+FuncGodotMap
+DirectionalLight3D
 MeshInstance3D
 ColorRect
 SubViewport
@@ -10,6 +12,3 @@ GPUParticles3D
 Decal
 CPUParticles2D
 Control
-TextureRect
-MarginContainer
-Label

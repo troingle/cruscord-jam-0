@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://rryfsmax2r1d"]
+
+[ext_resource type="Texture2D" uid="uid://ch4pwidiyh2n1" path="res://textures/Core_Metal/BoilerDetail_C.png" id="1_j0rgn"]
+
+[resource]
+albedo_texture = ExtResource("1_j0rgn")
+metallic_specular = 0.0
+texture_filter = 2

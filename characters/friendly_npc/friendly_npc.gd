@@ -56,7 +56,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		pass#$BodyMesh/AnimationPlayer.play("CombatIdle")
 			
-	$"../../Marker".global_position = target_pos
 	
 	
 	if hp < 0:

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ccsvyck25qtkx"]
+
+[ext_resource type="Texture2D" uid="uid://dxwhvsplkl5wr" path="res://textures/Core_Earth/TunnelRock_B.png" id="1_8jprf"]
+
+[resource]
+albedo_texture = ExtResource("1_8jprf")
+metallic_specular = 0.0
+texture_filter = 2

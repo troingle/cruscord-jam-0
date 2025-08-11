@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cu1v33lldf1ki"]
+
+[ext_resource type="Texture2D" uid="uid://ew7bi8cdycbd" path="res://textures/Core_Foliage/DarkGrenGrass_A.png" id="1_2exsh"]
+
+[resource]
+albedo_texture = ExtResource("1_2exsh")
+metallic_specular = 0.0
+texture_filter = 2

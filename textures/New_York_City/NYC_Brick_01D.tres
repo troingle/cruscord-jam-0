@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://kwlms1ac2ant"]
+
+[ext_resource type="Texture2D" uid="uid://eq24o4mxa0p7" path="res://textures/New_York_City/NYC_Brick_01D.png" id="1_cx1by"]
+
+[resource]
+albedo_texture = ExtResource("1_cx1by")
+metallic_specular = 0.0
+texture_filter = 2

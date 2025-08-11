@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b547xij7vewrk"]
+
+[ext_resource type="Texture2D" uid="uid://j2wxos25nqxq" path="res://textures/UNATCO/Uob_HangnLight.png" id="1_0fuxc"]
+
+[resource]
+albedo_texture = ExtResource("1_0fuxc")
+metallic_specular = 0.0
+texture_filter = 2
