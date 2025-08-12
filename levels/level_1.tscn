@@ -1775,7 +1775,9 @@ points = PackedVector3Array(-76.4458, 20.0949, 90.057, -74, 20, 90, -74, 21.9998
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_jirdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9163, 4.16729, 53.5014)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47736, 4.19504, 27.8543)
+speed = 7.7
+jump_velocity = 8.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_kx6l7")
@@ -3009,6 +3011,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9763, 0.665731, -3.06221)
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("7_gwceb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.7804, 2.92281, 73.1091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37565, 2.92281, 5.74998)
 speed = 4.0
 accel = 3.0
+damage = 20
+fire_rate = 1.5

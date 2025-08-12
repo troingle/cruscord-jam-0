@@ -1,6 +1,7 @@
 extends Control
 
-@onready var ammo_label = $Crosshair/MarginContainer/AmmoCount
+@onready var hp_label = $HPContainer/HPLabel
+@onready var player = $".."
 
 func _process(delta: float) -> void:
-	ammo_label.text = " " + str(Global.ammo) + "\n " + str(Global.reserve_ammo)
+	hp_label.text = "HEALTH: " + str(Global.hp) + "\nAMMO: " + str(Global.ammo) + "\nTOTAL AMMO: " + str(Global.reserve_ammo)

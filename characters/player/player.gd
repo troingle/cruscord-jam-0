@@ -53,7 +53,8 @@ func _physics_process(delta):
 		rotation_degrees.y = look_rot.y
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+		
+	# MOVEMENT & GENERAL STUFF
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
@@ -64,14 +65,22 @@ func _physics_process(delta):
 	
 	if dialogue_box.visible:
 		input_dir = Vector2(0, 0)
-	
+		
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
 	velocity.x = lerp(velocity.x, direction.x * movement_speed, accel * delta)
 	velocity.z = lerp(velocity.z, direction.z * movement_speed, accel * delta)
 	
 	move_and_slide()
+	
+	if Input.is_action_pressed("crouch"):
+		head.position.y = crouch_head_pos
+		movement_speed = crouch_speed
+	else:
+		head.position.y = normal_head_pos
+		movement_speed = speed
 
+	# UI STUFF
 	if Input.is_action_pressed("exit") and dialogue_box.visible:
 		dialogue_box.close()
 		
@@ -88,15 +97,8 @@ func _physics_process(delta):
 	$UI/ChatLog/VBoxContainer/MarginContainer/ScrollContainer/LogText.text = Global.log_text
 	if Input.is_action_just_pressed("tab"):
 			$UI/ChatLog.visible = not $UI/ChatLog.visible
-			
-	if Input.is_action_pressed("crouch"):
-		head.position.y = crouch_head_pos
-		movement_speed = crouch_speed
-	else:
-		head.position.y = normal_head_pos
-		movement_speed = speed
 	
-	$UI/Crosshair/BarContainer/Bar.scale.x = gun_cooldown_timer.time_left * 0.65
+	#$UI/Crosshair/BarContainer/Bar.scale.x = gun_cooldown_timer.time_left * 0.65
 	
 	# GUNS
 	gun_rc.target_position.z = -Guns.guns[Global.gun]["range"]
@@ -114,6 +116,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("reload") and Global.ammo < Guns.guns[Global.gun]["max_ammo"]:
 		reload_timer.start()
+		
+	if Input.is_action_just_pressed("zoom"):
+		$Zoom.play("zoom_in")
+	if Input.is_action_just_released("zoom"):
+		$Zoom.play("zoom_out")
+	
 	
 func check_requirement(num):
 	if num == 0:

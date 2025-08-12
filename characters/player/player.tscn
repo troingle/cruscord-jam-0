@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqe6mh5mitj27"]
+[gd_scene load_steps=8 format=3 uid="uid://bqe6mh5mitj27"]
 
 [ext_resource type="Script" uid="uid://xemagug7w8m" path="res://characters/player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://b61d4dal1kclu" path="res://ui/ui.tscn" id="2_rkbax"]
@@ -6,6 +6,60 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 radius = 1.0
 height = 4.0
+
+[sub_resource type="Animation" id="Animation_xxgcw"]
+resource_name = "zoom_in"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [85.0, 30.0]
+}
+
+[sub_resource type="Animation" id="Animation_exd8k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [85.0]
+}
+
+[sub_resource type="Animation" id="Animation_5dc8e"]
+resource_name = "zoom_out"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [30.0, 85.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dc8e"]
+_data = {
+&"RESET": SubResource("Animation_exd8k"),
+&"zoom_in": SubResource("Animation_xxgcw"),
+&"zoom_out": SubResource("Animation_5dc8e")
+}
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 33
@@ -33,7 +87,7 @@ target_position = Vector3(0, 0, -5)
 collision_mask = 5
 
 [node name="GunRC" type="RayCast3D" parent="Head"]
-target_position = Vector3(0, 0, -20)
+target_position = Vector3(0, 0, -70)
 collision_mask = 8
 
 [node name="Timers" type="Node3D" parent="."]
@@ -46,6 +100,11 @@ wait_time = 1.3
 one_shot = true
 
 [node name="UI" parent="." instance=ExtResource("2_rkbax")]
+
+[node name="Zoom" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5dc8e")
+}
 
 [connection signal="timeout" from="Timers/GunCooldown" to="." method="_on_gun_cooldown_timeout"]
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_reload_timer_timeout"]

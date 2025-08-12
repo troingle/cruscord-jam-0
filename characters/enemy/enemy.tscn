@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://gr7muq4dfrr4"]
+[gd_scene load_steps=12 format=4 uid="uid://gr7muq4dfrr4"]
 
 [ext_resource type="Script" uid="uid://blvt0ahsir1kx" path="res://characters/enemy/enemy.gd" id="1_dxaiu"]
 
@@ -213,13 +213,6 @@ _data = {
 &"Action": SubResource("Animation_u7qoj"),
 &"Action_001": SubResource("Animation_jn425")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxaiu"]
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_dxaiu"]
-material = SubResource("StandardMaterial3D_dxaiu")
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 13
@@ -464,9 +457,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.36663, 0)
 [node name="PlayerDetector" type="RayCast3D" parent="EnemyHead"]
 target_position = Vector3(0, 0, -25)
 
-[node name="Visualizer" type="MeshInstance3D" parent="EnemyHead"]
-transform = Transform3D(0.0522558, 0, 0, 0, -4.84488e-07, 0.0522558, 0, -11.0838, -2.28418e-09, 0, -1.09455e-07, -13.0063)
-mesh = SubResource("CylinderMesh_dxaiu")
+[node name="ShootingRC" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+target_position = Vector3(0, 0, -70)
+debug_shape_custom_color = Color(0.729412, 0, 0, 1)
 
 [node name="WaitTimer" type="Timer" parent="."]
 one_shot = true
@@ -476,5 +470,8 @@ autostart = true
 wait_time = 12.0
 one_shot = true
 
+[node name="ShootTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="WaitTimer" to="." method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="FailsafeTimer" to="." method="_on_failsafe_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
