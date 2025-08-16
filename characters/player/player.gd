@@ -100,6 +100,12 @@ func _physics_process(delta):
 	
 	#$UI/Crosshair/BarContainer/Bar.scale.x = gun_cooldown_timer.time_left * 0.65
 	
+	# SOUND
+	if direction and is_on_floor():
+		$Audio/Footsteps.volume_db = 0.0
+	else:
+		$Audio/Footsteps.volume_db = -9999.0
+	
 	# GUNS
 	gun_rc.target_position.z = -Guns.guns[Global.gun]["range"]
 		

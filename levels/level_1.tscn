@@ -1775,7 +1775,7 @@ points = PackedVector3Array(-76.4458, 20.0949, 90.057, -74, 20, 90, -74, 21.9998
 [node name="WorldEnvironment" parent="." instance=ExtResource("1_vn7o3")]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_jirdo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47736, 4.19504, 27.8543)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3263, 1.66936, 28.0482)
 speed = 7.7
 jump_velocity = 8.0
 

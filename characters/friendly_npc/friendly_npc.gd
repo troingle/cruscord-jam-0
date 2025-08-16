@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 			stop_movement(false)
 	else:
 		pass#$BodyMesh/AnimationPlayer.play("CombatIdle")
-			
 	
 	
 	if hp < 0:

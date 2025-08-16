@@ -1,3 +1,6 @@
+AudioStreamPlayer
+Node3D
+FuncGodotMap
 Control
 ColorRect
 TextureRect
@@ -6,9 +9,7 @@ MarginContainer
 Timer
 MeshInstance3D
 RayCast3D
-FuncGodotMap
 DirectionalLight3D
 SubViewport
 SubViewportContainer
-Node3D
 AudioStreamPlayer3D

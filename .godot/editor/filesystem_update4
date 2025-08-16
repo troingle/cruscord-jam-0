@@ -1,7 +1,9 @@
 res://levels/level_1.tscn
 res://ui/fisheye.gdshader
+res://textures/Core_Foliage/DarkGrenGrass_A.tres
 res://ui/limit.gdshader
 res://ui/ui.tscn
 res://characters/enemy/enemy.tscn
 res://characters/player/player.tscn
 res://characters/friendly_npc/friendly_npc.tscn
+res://characters/player/player.gd
