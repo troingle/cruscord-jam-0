@@ -1,2 +1,2 @@
 # cruscord-jam-0
-An immersive sim for a game jam
+A stealth FPS for a game jam
