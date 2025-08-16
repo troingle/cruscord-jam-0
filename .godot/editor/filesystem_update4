@@ -1,11 +1,7 @@
-res://characters/player/player.tscn
-res://ui/limit.gdshader
-res://characters/friendly_npc/friendly_npc.tscn
 res://levels/level_1.tscn
+res://ui/fisheye.gdshader
+res://ui/limit.gdshader
 res://ui/ui.tscn
 res://characters/enemy/enemy.tscn
-res://misc_nodes/world_environment.tscn
-res://characters/enemy/enemy.gd
-res://characters/player/player.gd
-res://ui/ui.gd
-res://ui/global.gd
+res://characters/player/player.tscn
+res://characters/friendly_npc/friendly_npc.tscn

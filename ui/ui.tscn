@@ -3,20 +3,20 @@
 [ext_resource type="Texture2D" uid="uid://f6kj2cmw1bim" path="res://other_textures/ui_textures/chatbox.png" id="1_bi8hs"]
 [ext_resource type="Script" uid="uid://cdk4k0bnwj0l5" path="res://ui/ui.gd" id="1_hrmpd"]
 [ext_resource type="Script" uid="uid://c4w0c25s50ndb" path="res://ui/dialogue.gd" id="1_nb4k0"]
-[ext_resource type="Shader" uid="uid://dif2emifuvrs8" path="res://ui/limit.gdshader" id="2_hrmpd"]
 [ext_resource type="FontFile" uid="uid://cfxxuy05qttpj" path="res://fonts/adobe_text_pro/AdobeTextPro-Regular.ttf" id="2_obcwv"]
+[ext_resource type="Texture2D" uid="uid://p88l7q8btip3" path="res://other_textures/ui_textures/crosshairsfinal.png" id="2_os0ka"]
+[ext_resource type="Texture2D" uid="uid://cmi0lsxqgejfy" path="res://other_textures/ui_textures/hudfinal.png" id="2_x7jpl"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
-[ext_resource type="Texture2D" uid="uid://c7fww65qtegt2" path="res://ui/palettes/Mission Briefing.png" id="3_x7jpl"]
 [ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://other_textures/ui_textures/LEAVe.png" id="4_vkava"]
 [ext_resource type="Script" uid="uid://bmw6w340i368x" path="res://ui/leave_button.gd" id="5_tf0e0"]
 [ext_resource type="Texture2D" uid="uid://c1ghw4dhk3bn4" path="res://other_textures/ui_textures/chat_log/bg.png" id="6_bo1jx"]
-[ext_resource type="Texture2D" uid="uid://drfqboj84u45d" path="res://other_textures/ui_textures/crosshair_normal1.png" id="6_obcwv"]
 [ext_resource type="Texture2D" uid="uid://cca1fuxafrl4t" path="res://other_textures/ui_textures/chat_log/bottom_text.png" id="7_gycre"]
 [ext_resource type="Texture2D" uid="uid://dp0j5nq88cu8g" path="res://other_textures/ui_textures/chat_log/top_text.png" id="8_pa1oa"]
+[ext_resource type="Shader" uid="uid://cvxyw6xjiplym" path="res://ui/fisheye.gdshader" id="15_diyc5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7jpl"]
-shader = ExtResource("2_hrmpd")
-shader_parameter/color_ramp = ExtResource("3_x7jpl")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mf2ns"]
+shader = ExtResource("15_diyc5")
+shader_parameter/fish_intensity = -1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ks8t7"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -36,15 +36,86 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hrmpd")
 
-[node name="ColorLimit" type="ColorRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_x7jpl")
+[node name="Crosshair" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(625, 360)
+texture = ExtResource("2_os0ka")
+
+[node name="FishEye" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mf2ns")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="UIBorder" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UIBorder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x7jpl")
+
+[node name="HPContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_left = 466.0
+offset_top = 640.0
+offset_right = 787.0
+offset_bottom = 734.521
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+
+[node name="HPLabel" type="Label" parent="HPContainer"]
+modulate = Color(0, 0.945098, 0.886275, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 73
+text = "100"
+autowrap_mode = 2
+
+[node name="AmmoContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_left = 1006.0
+offset_top = 626.0
+offset_right = 1327.0
+offset_bottom = 720.521
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 20
+
+[node name="AmmoLabel" type="Label" parent="AmmoContainer"]
+modulate = Color(0, 0.945098, 0.886275, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 73
+text = "100"
+autowrap_mode = 2
 
 [node name="DialogueBox" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -241,70 +312,6 @@ layout_mode = 2
 texture = ExtResource("7_gycre")
 expand_mode = 5
 
-[node name="Crosshair" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Normal" type="TextureRect" parent="Crosshair"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.06, 0.06)
-pivot_offset = Vector2(1754, 1240)
-mouse_filter = 2
-texture = ExtResource("6_obcwv")
-
-[node name="MarginContainer" type="MarginContainer" parent="Crosshair"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.43
-anchor_top = 0.31
-anchor_right = 0.55
-anchor_bottom = 0.6
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AmmoCount" type="Label" parent="Crosshair/MarginContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(50, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0.945098, 0.886275, 1)
-theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 28
-text = " 12
- 24"
-
-[node name="BarContainer" type="MarginContainer" parent="Crosshair"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.427
-anchor_top = 0.65
-anchor_right = 0.579
-anchor_bottom = 0.655
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Bar" type="Control" parent="Crosshair/BarContainer"]
-layout_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="Crosshair/BarContainer/Bar"]
-layout_mode = 2
-offset_right = 196.0
-offset_bottom = 3.0
-color = Color(0, 0.945098, 0.886275, 1)
-
 [node name="AmmoInfo" type="MarginContainer" parent="."]
 texture_filter = 2
 layout_mode = 1
@@ -319,19 +326,3 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_left = -145
 theme_override_constants/margin_bottom = 35
-
-[node name="HPContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-offset_right = 321.0
-offset_bottom = 89.0
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 20
-
-[node name="HPLabel" type="Label" parent="HPContainer"]
-modulate = Color(0, 0.945098, 0.886275, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_obcwv")
-theme_override_font_sizes/font_size = 28
-text = "100"
-autowrap_mode = 2

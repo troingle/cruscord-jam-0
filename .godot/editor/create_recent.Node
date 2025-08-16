@@ -1,3 +1,6 @@
+Control
+ColorRect
+TextureRect
 AnimationPlayer
 MarginContainer
 Timer
@@ -5,11 +8,7 @@ MeshInstance3D
 RayCast3D
 FuncGodotMap
 DirectionalLight3D
-ColorRect
 SubViewport
 SubViewportContainer
 Node3D
 AudioStreamPlayer3D
-CPUParticles3D
-GPUParticles3D
-Decal
