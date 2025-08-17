@@ -1,11 +1,13 @@
 extends CharacterBody3D
 
 var movement_speed = 0.0
-@export var speed = 6.6
-@export var crouch_speed = 6.6
-@export var accel = 4.7
+var speed = 8.0
+var crouch_speed = 4.5
+var run_speed = 14.0
+var accel = 4.7
+
 @export var jump_velocity = 10.0
-@export var sensitivity = 0.1
+var sensitivity = 0.1
 @export var min_angle = -80
 @export var max_angle = 90
 
@@ -20,6 +22,8 @@ var movement_speed = 0.0
 @onready var gun_cooldown_timer = $Timers/GunCooldown
 @onready var gun_rc = $Head/GunRC
 @onready var reload_timer = $Timers/ReloadTimer
+
+@onready var pause_screen = $UI/PauseScreen
 
 @onready var death_head_obj = load("res://misc_nodes/death_head.tscn")
 
@@ -51,7 +55,9 @@ func _input(event):
 		
 func _physics_process(delta):
 	if dead: return
-	if not dialogue_box.visible:
+
+	
+	if not dialogue_box.visible and not pause_screen.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		head.rotation_degrees.x = look_rot.x
 		rotation_degrees.y = look_rot.y
@@ -80,6 +86,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("crouch"):
 		head.position.y = crouch_head_pos
 		movement_speed = crouch_speed
+	elif Input.is_action_pressed("run"):
+		head.position.y = normal_head_pos
+		movement_speed = run_speed
 	else:
 		head.position.y = normal_head_pos
 		movement_speed = speed
@@ -104,6 +113,11 @@ func _physics_process(delta):
 	
 	#$UI/Crosshair/BarContainer/Bar.scale.x = gun_cooldown_timer.time_left * 0.65
 	
+	if Input.is_action_just_pressed("exit"):
+		pause_screen.visible = !pause_screen.visible
+	
+	sensitivity = $UI/PauseScreen/VBoxContainer/HSlider.value
+	
 	# SOUND
 	if direction and is_on_floor():
 		$Audio/Footsteps.volume_db = 0.0
@@ -113,7 +127,7 @@ func _physics_process(delta):
 	# GUNS
 	gun_rc.target_position.z = -Guns.guns[Global.gun]["range"]
 		
-	if Input.is_action_pressed("shoot") and not gun_on_cooldown and (Global.ammo > 0 or not Guns.guns[Global.gun]["requires_ammo"]) and not dialogue_box.visible:
+	if Input.is_action_pressed("shoot") and not gun_on_cooldown and (Global.ammo > 0 or not Guns.guns[Global.gun]["requires_ammo"]) and not dialogue_box.visible and not pause_screen.visible:
 		gun_on_cooldown = true
 		$Audio/ShootPistol.play()
 		$Anims/Shoot.play("pistol_shoot")
@@ -175,7 +189,11 @@ func _on_gun_cooldown_timeout() -> void:
 	gun_on_cooldown = false
 
 func _on_reload_timer_timeout() -> void:
-	Global.reserve_ammo -= abs(Guns.guns[Global.gun]["max_ammo"] - Global.ammo)
-	Global.ammo = Guns.guns[Global.gun]["max_ammo"]
+	if Global.reserve_ammo > 0:
+		Global.reserve_ammo -= abs(Guns.guns[Global.gun]["max_ammo"] - Global.ammo)
+		Global.ammo = Guns.guns[Global.gun]["max_ammo"]
+	if Global.reserve_ammo < 0:
+		Global.reserrve_ammo = 0
+		
 	
 	

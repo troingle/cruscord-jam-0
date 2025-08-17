@@ -24,7 +24,6 @@ var rng = RandomNumberGenerator.new()
 @export var damage = 10
 @export var fire_rate = 0.8
 
-
 var rotate_speed = 150.0
 
 func _ready() -> void:

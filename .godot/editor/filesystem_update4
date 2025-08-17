@@ -11,3 +11,5 @@ res://misc_nodes/intro_cutscene.tscn
 res://misc_nodes/death_head.gd
 res://ui/dialogue_source.gd
 res://characters/player/player.gd
+res://characters/enemy/enemy.gd
+res://characters/player/guns/guns.gd

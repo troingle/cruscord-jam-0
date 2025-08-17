@@ -10,8 +10,8 @@ var guns = {
 	},
 	"Pistol": {
 		"damage": 50,
-		"range": 50.0,
-		"cooldown": 0.5,
+		"range": 300.0,
+		"cooldown": 0.5	,
 		"requires_ammo": true,
 		"max_ammo": 12,
 	}
