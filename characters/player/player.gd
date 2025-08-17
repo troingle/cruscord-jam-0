@@ -21,6 +21,8 @@ var movement_speed = 0.0
 @onready var gun_rc = $Head/GunRC
 @onready var reload_timer = $Timers/ReloadTimer
 
+@onready var death_head_obj = load("res://misc_nodes/death_head.tscn")
+
 var input_dir
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -35,6 +37,7 @@ var normal_head_pos = 3.464
 var crouch_head_pos = 1.91
 
 var gun_on_cooldown = false
+var dead = false
 
 func _ready() -> void:
 	dialogue_box.open_dialogue("Test NPC", true)
@@ -47,6 +50,7 @@ func _input(event):
 		look_rot.x = clamp(look_rot.x, min_angle, max_angle)
 		
 func _physics_process(delta):
+	if dead: return
 	if not dialogue_box.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		head.rotation_degrees.x = look_rot.x
@@ -111,9 +115,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_pressed("shoot") and not gun_on_cooldown and (Global.ammo > 0 or not Guns.guns[Global.gun]["requires_ammo"]) and not dialogue_box.visible:
 		gun_on_cooldown = true
+		$Audio/ShootPistol.play()
+		$Anims/Shoot.play("pistol_shoot")
 		if gun_rc.is_colliding():
-			var target = gun_rc.get_collider()
-			target.hp -= Guns.guns[Global.gun]["damage"]
+			if gun_rc.get_collider().is_in_group("killable"):
+				var target = gun_rc.get_collider()
+				target.hp -= Guns.guns[Global.gun]["damage"]
 		
 		if Guns.guns[Global.gun]["requires_ammo"]:
 			Global.ammo -= 1
@@ -122,12 +129,34 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("reload") and Global.ammo < Guns.guns[Global.gun]["max_ammo"]:
 		reload_timer.start()
+		$Audio/ReloadPistol.play()
 		
 	if Input.is_action_just_pressed("zoom"):
 		$Zoom.play("zoom_in")
 	if Input.is_action_just_released("zoom"):
 		$Zoom.play("zoom_out")
-	
+		
+	if Global.hp <= 0:
+		dead = true
+		
+		var death_head = death_head_obj.instantiate()
+		$"..".add_child(death_head)
+		death_head.global_position = head.global_position
+		death_head.camera.current = true
+		
+		$Audio/Footsteps.volume_db = -9999.0
+		$UI/DeathMsg.show()
+		$UI/UIBorder.hide()
+		$UI/DialogueBox.hide()
+		$UI/ChatLog.hide()
+		$UI/AmmoInfo.hide()
+		$UI/HPContainer.hide()
+		$UI/Crosshair.hide()
+		$UI/AmmoContainer.hide()
+		
+		$Head/Weapon.hide()
+		
+		
 	
 func check_requirement(num):
 	if num == 0:

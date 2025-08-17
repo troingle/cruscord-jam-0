@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=17 format=3 uid="uid://b61d4dal1kclu"]
 
 [ext_resource type="Texture2D" uid="uid://f6kj2cmw1bim" path="res://other_textures/ui_textures/chatbox.png" id="1_bi8hs"]
 [ext_resource type="Script" uid="uid://cdk4k0bnwj0l5" path="res://ui/ui.gd" id="1_hrmpd"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://p88l7q8btip3" path="res://other_textures/ui_textures/crosshairsfinal.png" id="2_os0ka"]
 [ext_resource type="Texture2D" uid="uid://cmi0lsxqgejfy" path="res://other_textures/ui_textures/hudfinal.png" id="2_x7jpl"]
 [ext_resource type="PackedScene" uid="uid://c51kfxnjyebe5" path="res://ui/option.tscn" id="3_wl5ax"]
-[ext_resource type="Texture2D" uid="uid://dmdt7boaaxlsh" path="res://other_textures/ui_textures/LEAVe.png" id="4_vkava"]
-[ext_resource type="Script" uid="uid://bmw6w340i368x" path="res://ui/leave_button.gd" id="5_tf0e0"]
 [ext_resource type="Texture2D" uid="uid://c1ghw4dhk3bn4" path="res://other_textures/ui_textures/chat_log/bg.png" id="6_bo1jx"]
 [ext_resource type="Texture2D" uid="uid://cca1fuxafrl4t" path="res://other_textures/ui_textures/chat_log/bottom_text.png" id="7_gycre"]
 [ext_resource type="Texture2D" uid="uid://dp0j5nq88cu8g" path="res://other_textures/ui_textures/chat_log/top_text.png" id="8_pa1oa"]
@@ -109,7 +107,7 @@ theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 20
 
 [node name="AmmoLabel" type="Label" parent="AmmoContainer"]
-modulate = Color(0, 0.945098, 0.886275, 1)
+modulate = Color(0.941176, 0.67451, 0.988235, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_obcwv")
@@ -242,16 +240,6 @@ layout_mode = 2
 [node name="Option6" parent="DialogueBox/HBoxContainer/Options/ScrollContainer/VBoxContainer" instance=ExtResource("3_wl5ax")]
 layout_mode = 2
 
-[node name="LeaveButton" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 1152.0
-offset_top = 306.0
-offset_right = 1216.0
-offset_bottom = 338.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_vkava")
-script = ExtResource("5_tf0e0")
-
 [node name="ChatLog" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -326,3 +314,20 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_left = -145
 theme_override_constants/margin_bottom = 35
+
+[node name="DeathMsg" type="Label" parent="."]
+visible = false
+modulate = Color(0, 0.945098, 0.886275, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 188
+text = "YOU HAVE PERISHED"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -118,7 +118,7 @@ bind/28/name = &"heel.02.R"
 bind/28/bone = -1
 bind/28/pose = Transform3D(1.42497e-08, 1.84219e-06, -0.612017, -0.612013, -6.83716e-09, -8.7165e-07, 4.7023e-09, 0.612013, 1.95163e-06, -0.0974528, -0.075566, 1.00806)
 
-[node name="FriendlyNPC" type="CharacterBody3D" groups=["friendly_npc"]]
+[node name="FriendlyNPC" type="CharacterBody3D" groups=["friendly_npc", "killable"]]
 collision_layer = 13
 collision_mask = 13
 script = ExtResource("1_sc2l7")

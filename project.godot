@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CRUSCORD JAM 0"
-run/main_scene="uid://14g5htvx2spn"
+run/main_scene="uid://cccc6bfu7e4yl"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
@@ -38,6 +38,7 @@ option=""
 friendly_npc=""
 enemy=""
 player=""
+killable=""
 
 [input]
 

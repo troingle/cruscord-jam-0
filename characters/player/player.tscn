@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://bqe6mh5mitj27"]
+[gd_scene load_steps=28 format=4 uid="uid://bqe6mh5mitj27"]
 
 [ext_resource type="Script" uid="uid://xemagug7w8m" path="res://characters/player/player.gd" id="1_oul6g"]
 [ext_resource type="PackedScene" uid="uid://b61d4dal1kclu" path="res://ui/ui.tscn" id="2_rkbax"]
-[ext_resource type="AudioStream" uid="uid://t3n24viynl6q" path="res://sound/footstepsv2.wav" id="3_exd8k"]
+[ext_resource type="AudioStream" uid="uid://bwh1coqiuyy0f" path="res://sound/footstepsv3.wav" id="3_5dc8e"]
+[ext_resource type="AudioStream" uid="uid://bu17dsmd4ruie" path="res://sound/pistol_shot.wav" id="4_ixbpm"]
+[ext_resource type="AudioStream" uid="uid://ba3im4qq4g8k4" path="res://sound/pistol_reload.wav" id="5_c6leb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
 radius = 1.0
@@ -339,6 +341,43 @@ _data = {
 &"zoom_out": SubResource("Animation_5dc8e")
 }
 
+[sub_resource type="Animation" id="Animation_ixbpm"]
+resource_name = "pistol_shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Head/Weapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0321637, 0.297024),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.50152, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c6leb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Head/Weapon:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dirf7"]
+_data = {
+&"RESET": SubResource("Animation_c6leb"),
+&"pistol_shoot": SubResource("Animation_ixbpm")
+}
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 33
 collision_mask = 33
@@ -366,26 +405,28 @@ collision_mask = 5
 
 [node name="GunRC" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 0, -70)
-collision_mask = 8
 
-[node name="Pistol_01" type="Node3D" parent="Head"]
-transform = Transform3D(-3.56695e-09, 0, 0.0816023, 0, 0.0816023, 0, -0.0816023, 0, -3.56695e-09, 0.861588, -1.83358, -1.34818)
+[node name="Weapon" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.861967, -1.29864, -1.34769)
 
-[node name="Pistol_01_Magazine_Mesh_Separated" type="MeshInstance3D" parent="Head/Pistol_01"]
+[node name="Pistol_01" type="Node3D" parent="Head/Weapon"]
+transform = Transform3D(-3.56695e-09, 0, 0.0816023, 0, 0.0816023, 0, -0.0816023, 0, -3.56695e-09, -0.000378847, -0.470446, -0.000494719)
+
+[node name="Pistol_01_Magazine_Mesh_Separated" type="MeshInstance3D" parent="Head/Weapon/Pistol_01"]
 mesh = SubResource("ArrayMesh_6xpjw")
 skeleton = NodePath("")
 
-[node name="Pistol_01_Magazine_Full_Mesh" type="MeshInstance3D" parent="Head/Pistol_01"]
+[node name="Pistol_01_Magazine_Full_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01"]
 mesh = SubResource("ArrayMesh_54vyx")
 skeleton = NodePath("")
 
-[node name="Pistol_01_Magazine_OneBullet_Mesh" type="MeshInstance3D" parent="Head/Pistol_01"]
+[node name="Pistol_01_Magazine_OneBullet_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01"]
 mesh = SubResource("ArrayMesh_10bgc")
 skeleton = NodePath("")
 
-[node name="Pistol_01_Armature" type="Node3D" parent="Head/Pistol_01"]
+[node name="Pistol_01_Armature" type="Node3D" parent="Head/Weapon/Pistol_01"]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Head/Pistol_01/Pistol_01_Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Head/Weapon/Pistol_01/Pistol_01_Armature"]
 bones/0/name = "Main"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 1.20047e-07, 0, -1.20047e-07, 1, 0, 0, 0)
@@ -422,23 +463,23 @@ bones/4/position = Vector3(0, 0, -1.13687e-13)
 bones/4/rotation = Quaternion(8.88178e-15, 0, 0, 1)
 bones/4/scale = Vector3(1, 1, 1)
 
-[node name="Hammer_Mesh" type="MeshInstance3D" parent="Head/Pistol_01/Pistol_01_Armature/Skeleton3D"]
+[node name="Hammer_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01/Pistol_01_Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_vs1yf")
 skin = SubResource("Skin_5tkl1")
 
-[node name="Mag_Mesh" type="MeshInstance3D" parent="Head/Pistol_01/Pistol_01_Armature/Skeleton3D"]
+[node name="Mag_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01/Pistol_01_Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_hvtpf")
 skin = SubResource("Skin_5tkl1")
 
-[node name="Main_Mesh" type="MeshInstance3D" parent="Head/Pistol_01/Pistol_01_Armature/Skeleton3D"]
+[node name="Main_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01/Pistol_01_Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_yeqsc")
 skin = SubResource("Skin_5tkl1")
 
-[node name="Slide_Mesh" type="MeshInstance3D" parent="Head/Pistol_01/Pistol_01_Armature/Skeleton3D"]
+[node name="Slide_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01/Pistol_01_Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_hgjaw")
 skin = SubResource("Skin_5tkl1")
 
-[node name="Trigger_Mesh" type="MeshInstance3D" parent="Head/Pistol_01/Pistol_01_Armature/Skeleton3D"]
+[node name="Trigger_Mesh" type="MeshInstance3D" parent="Head/Weapon/Pistol_01/Pistol_01_Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_h2vcb")
 skin = SubResource("Skin_5tkl1")
 
@@ -448,7 +489,7 @@ skin = SubResource("Skin_5tkl1")
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="Timers"]
-wait_time = 1.3
+wait_time = 0.3
 one_shot = true
 
 [node name="UI" parent="." instance=ExtResource("2_rkbax")]
@@ -461,14 +502,24 @@ libraries = {
 [node name="Audio" type="Node3D" parent="."]
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("3_exd8k")
+stream = ExtResource("3_5dc8e")
 volume_db = 5.0
 autoplay = true
 
 [node name="ShootPistol" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("3_exd8k")
+stream = ExtResource("4_ixbpm")
 volume_db = 5.0
-autoplay = true
+
+[node name="ReloadPistol" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_c6leb")
+volume_db = 5.0
+
+[node name="Anims" type="Node3D" parent="."]
+
+[node name="Shoot" type="AnimationPlayer" parent="Anims"]
+libraries = {
+&"": SubResource("AnimationLibrary_dirf7")
+}
 
 [connection signal="timeout" from="Timers/GunCooldown" to="." method="_on_gun_cooldown_timeout"]
 [connection signal="timeout" from="Timers/ReloadTimer" to="." method="_on_reload_timer_timeout"]

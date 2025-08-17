@@ -14,7 +14,7 @@ func open_dialogue(npc_name, first_time):
 	current_npc = npc_name
 	show()
 	$BGContainer/DialogueBG.show()
-	$"../LeaveButton".show()
+	#$"../LeaveButton".show()
 	$MarginContainer/HBoxContainer/LeftSide/VBoxContainer/NameLabel.text = current_npc
 	
 	if first_time:
@@ -47,7 +47,7 @@ func choose_option(option):
 	
 func close():
 	hide()
-	$"../LeaveButton".hide()
+	#$"../LeaveButton".hide()
 	$BGContainer/DialogueBG.hide()
 	if current_npc_obj:
 		current_npc_obj.stop_movement(false)
