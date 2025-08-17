@@ -6,10 +6,8 @@ res://ui/ui.tscn
 res://characters/enemy/enemy.tscn
 res://characters/player/player.tscn
 res://characters/friendly_npc/friendly_npc.tscn
-res://characters/player/player.gd
-res://characters/player/guns/guns.gd
-res://ui/dialogue.gd
 res://misc_nodes/death_head.tscn
-res://misc_nodes/death_head.gd
 res://misc_nodes/intro_cutscene.tscn
-res://misc_nodes/intro_cutscene.gd
+res://misc_nodes/death_head.gd
+res://ui/dialogue_source.gd
+res://characters/player/player.gd

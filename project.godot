@@ -13,6 +13,8 @@ config_version=5
 config/name="CRUSCORD JAM 0"
 run/main_scene="uid://cccc6bfu7e4yl"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+config/icon="uid://dde8yfgk41juv"
 
 [autoload]
 

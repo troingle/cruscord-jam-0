@@ -137,26 +137,29 @@ func _physics_process(delta):
 		$Zoom.play("zoom_out")
 		
 	if Global.hp <= 0:
-		dead = true
+		die()
 		
-		var death_head = death_head_obj.instantiate()
-		$"..".add_child(death_head)
-		death_head.global_position = head.global_position
-		death_head.camera.current = true
+func die():
+	dead = true
 		
-		$Audio/Footsteps.volume_db = -9999.0
-		$UI/DeathMsg.show()
-		$UI/UIBorder.hide()
-		$UI/DialogueBox.hide()
-		$UI/ChatLog.hide()
-		$UI/AmmoInfo.hide()
-		$UI/HPContainer.hide()
-		$UI/Crosshair.hide()
-		$UI/AmmoContainer.hide()
-		
-		$Head/Weapon.hide()
-		
-		
+	var death_head = death_head_obj.instantiate()
+	$"..".add_child(death_head)
+	death_head.global_position = head.global_position
+	death_head.camera.current = true
+	
+	var quote = DialogueSource.quotes.pick_random()
+	$UI/DeathMsg.text = '"' + quote[0] + '"\n- ' + quote[1]
+	
+	$Audio/Footsteps.volume_db = -9999.0
+	$UI/DeathMsg.show()
+	$UI/UIBorder.hide()
+	$UI/DialogueBox.hide()
+	$UI/ChatLog.hide()
+	$UI/AmmoInfo.hide()
+	$UI/HPContainer.hide()
+	$UI/Crosshair.hide()
+	$UI/AmmoContainer.hide()
+	$Head/Weapon.hide()
 	
 func check_requirement(num):
 	if num == 0:
