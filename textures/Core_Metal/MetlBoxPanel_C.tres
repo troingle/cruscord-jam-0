@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b65t7oc0bh30t"]
+
+[ext_resource type="Texture2D" uid="uid://d2aqdop01mkmp" path="res://textures/Core_Metal/MetlBoxPanel_C.png" id="1_wjy68"]
+
+[resource]
+albedo_texture = ExtResource("1_wjy68")
+metallic_specular = 0.0
+texture_filter = 2

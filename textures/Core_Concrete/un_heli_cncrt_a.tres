@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://the0ewp4ga5t"]
+
+[ext_resource type="Texture2D" uid="uid://dobfwq0fr8olh" path="res://textures/Core_Concrete/un_heli_cncrt_a.png" id="1_dc4ix"]
+
+[resource]
+albedo_texture = ExtResource("1_dc4ix")
+metallic_specular = 0.0
+texture_filter = 2

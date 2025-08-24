@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dsvvvimmkmdep"]
+
+[ext_resource type="Texture2D" uid="uid://cxjced5jbpotk" path="res://textures/Core_Metal/Galvanzd.png" id="1_ibrhi"]
+
+[resource]
+albedo_texture = ExtResource("1_ibrhi")
+metallic_specular = 0.0
+texture_filter = 2

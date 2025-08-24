@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://blxs4td04d354"]
+
+[ext_resource type="Texture2D" uid="uid://c3mpbi5cmxmxy" path="res://textures/Core_Wood/ClenBrwnWood_A.png" id="1_ixid8"]
+
+[resource]
+albedo_texture = ExtResource("1_ixid8")
+metallic_specular = 0.0
+texture_filter = 2

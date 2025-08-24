@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b61d4dal1kclu"]
+[gd_scene load_steps=30 format=3 uid="uid://b61d4dal1kclu"]
 
 [ext_resource type="Texture2D" uid="uid://f6kj2cmw1bim" path="res://other_textures/ui_textures/chatbox.png" id="1_bi8hs"]
 [ext_resource type="Script" uid="uid://cdk4k0bnwj0l5" path="res://ui/ui.gd" id="1_hrmpd"]
@@ -29,6 +29,28 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x7jpl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os0ka"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_diyc5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mf2ns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ju45i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74toj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_co7pv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x7nxp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3lbto"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c3fg2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bw7v0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0avjw"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -347,38 +369,99 @@ autowrap_mode = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_top = 0.2
+anchor_top = 0.265
 anchor_right = 0.9
-anchor_bottom = 0.8
+anchor_bottom = 0.695
 theme_override_styles/panel = SubResource("StyleBoxFlat_bi8hs")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen"]
+[node name="TextureRect" type="TextureRect" parent="PauseScreen"]
+layout_mode = 2
+texture = ExtResource("6_bo1jx")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseScreen"]
+layout_mode = 2
+theme_override_constants/margin_left = 65
+theme_override_constants/margin_right = 65
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseScreen/MarginContainer"]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="PauseScreen/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="PauseScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x7jpl")
 
-[node name="SpeechLabel" type="Label" parent="PauseScreen/VBoxContainer"]
+[node name="Menu1" type="Label" parent="PauseScreen/MarginContainer/VBoxContainer"]
+modulate = Color(0, 0.945098, 0.886275, 1)
 texture_filter = 1
-custom_minimum_size = Vector2(50, 100)
+custom_minimum_size = Vector2(50, 53.255)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_obcwv")
 theme_override_font_sizes/font_size = 33
-text = "PAUSED / PRESS Q TO RETURN"
+text = "PRESS Q TO TOGGLE PAUSE MENU"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="HSeparator2" type="HSeparator" parent="PauseScreen/VBoxContainer"]
+[node name="FPS" type="Label" parent="PauseScreen/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 27.08)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 33
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="PauseScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x7jpl")
 
-[node name="HSlider" type="HSlider" parent="PauseScreen/VBoxContainer"]
+[node name="Menu2" type="Label" parent="PauseScreen/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 27.08)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 33
+text = "SENSITIVITY"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSlider" type="HSlider" parent="PauseScreen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 0.01
 max_value = 0.6
 step = 0.0
 value = 0.1
+
+[node name="HSeparator4" type="HSeparator" parent="PauseScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_x7jpl")
+
+[node name="MenuButton" type="Button" parent="PauseScreen/MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 37.145)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0.945098, 0.886275, 1)
+theme_override_colors/font_hover_color = Color(0, 0.945098, 0.886275, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_obcwv")
+theme_override_font_sizes/font_size = 33
+theme_override_styles/focus = SubResource("StyleBoxEmpty_os0ka")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_diyc5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mf2ns")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_ju45i")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_74toj")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_co7pv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x7nxp")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_3lbto")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c3fg2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_bw7v0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0avjw")
+text = "QUIT TO MENU"
+autowrap_mode = 2

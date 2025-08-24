@@ -55,7 +55,6 @@ func _input(event):
 		
 func _physics_process(delta):
 	if dead: return
-
 	
 	if not dialogue_box.visible and not pause_screen.visible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -94,15 +93,16 @@ func _physics_process(delta):
 		movement_speed = speed
 
 	# UI STUFF
-	if Input.is_action_pressed("exit") and dialogue_box.visible:
-		dialogue_box.close()
-		
-	if Input.is_action_just_pressed("interact") and interact_rc.is_colliding():
+	
+	$UI/PauseScreen/MarginContainer/VBoxContainer/FPS.text = "FPS: " + str(Engine.get_frames_per_second())
+	if Input.is_action_just_pressed("interact") and interact_rc.is_colliding() and not dialogue_box.visible:
 		var collider = interact_rc.get_collider()
 		if collider.is_in_group("friendly_npc"):
 			dialogue_box.open_dialogue(collider.npc_name, true)
 			dialogue_box.current_npc_obj = collider
 			collider.on_the_move = false
+	elif Input.is_action_just_pressed("interact") and dialogue_box.visible:
+		dialogue_box.close()
 		
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = headbob(t_bob)
@@ -116,7 +116,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("exit"):
 		pause_screen.visible = !pause_screen.visible
 	
-	sensitivity = $UI/PauseScreen/VBoxContainer/HSlider.value
+	sensitivity = $UI/PauseScreen/MarginContainer/VBoxContainer/HSlider.value
 	
 	# SOUND
 	if direction and is_on_floor():
@@ -141,7 +141,7 @@ func _physics_process(delta):
 		gun_cooldown_timer.wait_time = Guns.guns[Global.gun]["cooldown"]
 		gun_cooldown_timer.start()
 		
-	if Input.is_action_just_pressed("reload") and Global.ammo < Guns.guns[Global.gun]["max_ammo"]:
+	if Input.is_action_just_pressed("reload") and Global.ammo < Guns.guns[Global.gun]["max_ammo"] and not $Audio/ReloadPistol.playing:
 		reload_timer.start()
 		$Audio/ReloadPistol.play()
 		

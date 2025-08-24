@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b2aniegp8glwn"]
+
+[ext_resource type="Texture2D" uid="uid://ey72d5m1v3v5" path="res://textures/New_York_City/BarStoolTop_A.png" id="1_jd4x4"]
+
+[resource]
+albedo_texture = ExtResource("1_jd4x4")
+metallic_specular = 0.0
+texture_filter = 2

@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c2gtpprbjc12t"]
+
+[ext_resource type="Texture2D" uid="uid://cda14dxc85m57" path="res://textures/Core_Metal/OldBrasMCvent_A.png" id="1_btvnn"]
+
+[resource]
+albedo_texture = ExtResource("1_btvnn")
+metallic_specular = 0.0
+texture_filter = 2

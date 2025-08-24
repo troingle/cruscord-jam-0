@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://csku7sg31e2fq"]
+
+[ext_resource type="Texture2D" uid="uid://cy78r5q3hauci" path="res://textures/Core_Misc/TVMonitor_A1.png" id="1_tiwvh"]
+
+[resource]
+albedo_texture = ExtResource("1_tiwvh")
+metallic_specular = 0.0
+texture_filter = 2

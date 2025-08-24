@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dvv6v1o5qfg07"]
+
+[ext_resource type="Texture2D" uid="uid://ccdqnbgx02pwt" path="res://textures/Core_Bricks/PantWhitBrick.png" id="1_lf3d2"]
+
+[resource]
+albedo_texture = ExtResource("1_lf3d2")
+metallic_specular = 0.0
+texture_filter = 2

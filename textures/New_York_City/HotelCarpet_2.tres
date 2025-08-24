@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://daw8figdl4n71"]
+
+[ext_resource type="Texture2D" uid="uid://d23i8e15kwm7b" path="res://textures/New_York_City/HotelCarpet_2.png" id="1_uwemc"]
+
+[resource]
+albedo_texture = ExtResource("1_uwemc")
+metallic_specular = 0.0
+texture_filter = 2

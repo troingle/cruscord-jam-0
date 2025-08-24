@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://i3p5myxs3t3"]
+
+[ext_resource type="Texture2D" uid="uid://fmnaoudnnv3p" path="res://textures/New_York_City/blinds1.png" id="1_4v7hu"]
+
+[resource]
+albedo_texture = ExtResource("1_4v7hu")
+metallic_specular = 0.0
+texture_filter = 2

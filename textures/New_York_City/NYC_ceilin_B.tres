@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clyk4gl2u1jw8"]
+
+[ext_resource type="Texture2D" uid="uid://daoxh34wnworj" path="res://textures/New_York_City/NYC_ceilin_B.png" id="1_gtm4h"]
+
+[resource]
+albedo_texture = ExtResource("1_gtm4h")
+metallic_specular = 0.0
+texture_filter = 2

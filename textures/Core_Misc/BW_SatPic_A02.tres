@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cfymrsf4hbqf3"]
+
+[ext_resource type="Texture2D" uid="uid://cienmmpfuvveq" path="res://textures/Core_Misc/BW_SatPic_A02.png" id="1_wlcmd"]
+
+[resource]
+albedo_texture = ExtResource("1_wlcmd")
+metallic_specular = 0.0
+texture_filter = 2

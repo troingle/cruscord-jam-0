@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cvt80x3xdsybd"]
+
+[ext_resource type="Texture2D" uid="uid://mba4m4pgm8hj" path="res://textures/Core_Concrete/DrtyGrayBlock_A.png" id="1_vbeii"]
+
+[resource]
+albedo_texture = ExtResource("1_vbeii")
+metallic_specular = 0.0
+texture_filter = 2

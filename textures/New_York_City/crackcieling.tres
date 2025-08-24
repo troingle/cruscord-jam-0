@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://56jpsp7pr50y"]
+
+[ext_resource type="Texture2D" uid="uid://b3cnopj2p2t72" path="res://textures/New_York_City/crackcieling.png" id="1_aotvc"]
+
+[resource]
+albedo_texture = ExtResource("1_aotvc")
+metallic_specular = 0.0
+texture_filter = 2

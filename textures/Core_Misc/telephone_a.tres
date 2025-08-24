@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cfbslak535tvu"]
+
+[ext_resource type="Texture2D" uid="uid://bk4gelujmygo" path="res://textures/Core_Misc/telephone_a.png" id="1_bd1cf"]
+
+[resource]
+albedo_texture = ExtResource("1_bd1cf")
+metallic_specular = 0.0
+texture_filter = 2
